@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import customer,prices
 # Create your views here.
 
@@ -15,7 +15,11 @@ def view_prices(request):
 def edit_prices(request):
     p=prices.objects.all()
     if request.method=='POST':
-        if form.is_valid():
-            pass
+        #if form.is_valid():
+        for price in p:
+            pr=prices.objects.get(id=price.id)
+            pr.price=request.POST.get(str(price.id))
+            pr.save()
+        return redirect('view_prices')
 
     return render(request,'edit_prices.html',({'prices':p}))

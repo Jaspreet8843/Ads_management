@@ -5,19 +5,21 @@
     <title>Edit Prices</title>
 </head>
 <body>
-
-<table border="2">
-    <th>Customer Type</th>
-    <th>Price per unit</th>
-    {% for p in prices %}
-    <tr>
-    <td>{{p.cust_type}}</td>
-    <td><input id="p.id", name="p.id" value="{{p.price}}"></td>
-    </tr>
+<form method="post">
+    {% csrf_token %}
+    <table border="2">
+        <th>Customer Type</th>
+        <th>Price per unit</th>
+        {% for p in prices %}
+        <tr>
+            <td>{{p.cust_type}}</td>
+            <td><input id={{p.id}}, name={{p.id}} value="{{p.price}}"></td>
+        </tr>
         {% endfor %}
-</table>
-<button type="submit" value="OK">submit</button><p>
-<a href="/view_prices">View Price</a>
-
+    </table>
+    <button type="submit" value="OK">submit</button>
+    <p>
+        <a href="/view_prices">View Price</a>
+</form>
 </body>
 </html>
