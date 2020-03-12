@@ -10,6 +10,6 @@ class customer (models.Model):
         return self.cust_name + " " + self.cust_type
 
 class prices(models.Model):
-    cust_type=models.CharField(max_length=255)
+    cust_type=models.CharField(max_length=255, unique=True)
     price=models.FloatField()
 
