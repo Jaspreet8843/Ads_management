@@ -15,11 +15,19 @@ def view_prices(request):
 def edit_prices(request):
     p=prices.objects.all()
     if request.method=='POST':
-        #if form.is_valid():
+        new_cust=request.POST.get('cus_type')
+        new_price=request.POST.get('cus_price')
         for price in p:
             pr=prices.objects.get(id=price.id)
             pr.price=request.POST.get(str(price.id))
             pr.save()
+        if(new_cust != '' and new_price != ''):
+            obj=prices(cust_type=new_cust, price=new_price)
+            obj.save()
         return redirect('view_prices')
 
     return render(request,'edit_prices.html',({'prices':p}))
+
+def delete(request, no):
+    p=prices.objects.filter(id=no).delete()
+    return redirect(edit_prices)
