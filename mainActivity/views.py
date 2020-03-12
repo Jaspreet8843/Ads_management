@@ -31,3 +31,9 @@ def edit_prices(request):
 def delete(request, no):
     p=prices.objects.filter(id=no).delete()
     return redirect(edit_prices)
+
+def add_customer(request):
+    return render(request,'add_customer.html')
+
+def view_customers(request):
+    return render(request,'view_customers.html')
