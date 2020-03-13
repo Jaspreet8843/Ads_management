@@ -16,3 +16,11 @@ class prices(models.Model):
     cust_type=models.CharField(max_length=255, unique=True)
     price=models.FloatField()
 
+class adverts(models.Model):
+	cust_name=models.CharField(max_length=255)
+	cust_id=models.CharField(max_length=255)
+	ad_header=models.CharField(max_length=255)
+	ad_height=models.CharField(max_length=255)
+	ad_width=models.CharField(max_length=255)
+	ad_page=models.CharField(max_length=255)
+

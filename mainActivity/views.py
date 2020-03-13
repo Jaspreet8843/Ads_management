@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import customer,prices
+from .models import customer,prices,adverts
 import time
 # Create your views here.
 
@@ -9,6 +9,7 @@ def index(request):
 
     return render(request,'index.html')
 
+#PRICES--------------------------------------------------------------------------------
 def view_prices(request):
     p=prices.objects.all()
     return render(request,'view_prices.html',({'prices':p}))
@@ -25,6 +26,8 @@ def edit_prices(request):
         if(new_cust != '' and new_price != ''):
             obj=prices(cust_type=new_cust, price=new_price)
             obj.save()
+        else:
+            print("Entries can't be empty")
         return redirect('view_prices')
 
     return render(request,'edit_prices.html',({'prices':p}))
@@ -33,6 +36,7 @@ def delete(request, no):
     p=prices.objects.filter(id=no).delete()
     return redirect(edit_prices)
 
+#CUSTOMER-------------------------------------------------------------------------------
 def add_customer(request):
     if request.method=='POST':
         cust_name=request.POST.get('customer_name')
@@ -46,9 +50,35 @@ def add_customer(request):
             obj=customer(cust_name=cust_name,cust_address=cust_address,cust_phone=cust_phone,
                   cust_type=cust_type,cust_id=cust_id,cust_since=cust_since)
             obj.save()
+        else:
+            print("Entries can't be empty")
         return redirect('index')
     return render(request,'add_customer.html')
 
 def view_customers(request):
-    c=customer.objects.all()
-    return render(request,'view_customers.html',({'customers':c}))
+    cust = customer.objects.all()
+    return render(request,'view_customers.html',({'customers':cust}))
+
+
+#ADVERTISEMENTS----------------------------------------------------------------------------
+def add_advert(request):
+    if request.method=='POST':
+        cust_name=request.POST.get('customer_name')
+        cust_id=request.POST.get('customer_id')
+        ad_header=request.POST.get('ad_header')
+        ad_height=request.POST.get('ad_height')
+        ad_width=request.POST.get('ad_width')
+        ad_page=request.POST.get('ad_page')
+        if(cust_name != '' and cust_id != '' and ad_header != '' and ad_height != '' 
+            and ad_width != ''):
+            obj=adverts(cust_name=cust_name,cust_id=cust_id,ad_header=ad_header,ad_height=ad_height,
+                ad_width=ad_width,ad_page=ad_page)
+            obj.save()
+        else:
+            print("Entries can't be empty")
+        return redirect('index')
+    return render(request,'add_advert.html')
+
+def view_adverts(request):
+    ads = adverts.objects.all()
+    return render(request,'view_adverts.html',({'advertisements':ads}))

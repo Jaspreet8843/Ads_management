@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Janambhumi</title>
+</head>
+<body>
+<h1>Add Advertisement</h1>
+<form method="post"> {% csrf_token %}
+Customer Name:<input type="text" name="customer_name"><br>
+Customer ID:<input type="text" name="customer_id"><br>
+Header:<input type="text" name="ad_header"><br>
+Height:<input type="text" name="ad_height"><br>
+Width:<input type="text" name="ad_width"><br>
+Page Number(optional):<input type="number" name="ad_page"><br>
+<button type="submit">Send for approval</button>
+</form>
+</body>
+</html>

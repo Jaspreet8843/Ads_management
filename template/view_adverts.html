@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Janambhumi</title>
+</head>
+<body>
+<h1>View Advertisements</h1>
+<table border="2">
+    <th>Customer Name</th>
+    <th>Customer ID</th>
+    <th>Ad Header</th>
+    <th>Ad Height</th>
+    <th>Ad Width</th>
+    <th>Page No</th>
+    {% for i in advertisements %}
+    <tr>
+    <td>{{i.cust_name}}</td>
+    <td>{{i.cust_id}}</td>
+    <td>{{i.ad_header}}</td>
+    <td>{{i.ad_height}}</td>
+    <td>{{i.ad_width}}</td>
+    <td>{{i.ad_page}}</td>
+    </tr>>
+        {% endfor %}
+</table>
+</body>
+</html>
