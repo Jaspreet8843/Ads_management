@@ -1,4 +1,4 @@
 venv/
-mainActivity/_pycache_
+mainActivity/__pycache__
 mainActivity/migrations
 
