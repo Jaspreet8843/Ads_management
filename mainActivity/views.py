@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import customer,prices
+import time
 # Create your views here.
 
 def index(request):
@@ -33,6 +34,19 @@ def delete(request, no):
     return redirect(edit_prices)
 
 def add_customer(request):
+    if request.method=='POST':
+        cust_name=request.POST.get('customer_name')
+        cust_address=request.POST.get('customer_address')
+        cust_phone=request.POST.get('customer_phone')
+        cust_type=request.POST.get('customer_type')
+        cust_id=request.POST.get('customer_id')
+        cust_since=time.strftime('%Y-%m-%d')
+        if(cust_name != '' and cust_address != '' and cust_phone != '' and cust_type != '' 
+            and cust_id != ''):
+            obj=customer(cust_name=cust_name,cust_address=cust_address,cust_phone=cust_phone,
+                  cust_type=cust_type,cust_id=cust_id,cust_since=cust_since)
+            obj.save()
+        return redirect('index')
     return render(request,'add_customer.html')
 
 def view_customers(request):
