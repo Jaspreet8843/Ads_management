@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<meta id="cust_id" data-name="{{id}}">
-
+<meta id="cust_id" data-id="{{id|safe}}">
 
 <html>
 <head>
@@ -28,17 +27,32 @@
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
-    var IDs=[];
-    var metaid=$('#cust_id').data();
-    document.write(metaid);
-    for(var i=0; i<2; i++)
+    function split(str)
     {
-    IDs[i]=cust_id[i]
+    var arr=[];
+    var count=0;
+    var newString="";
+    for(var i=1; str[i]!=']';i++)
+    {
+        if(str[i]!='\'' && str[i]!=',' && str[i]!=' ')
+        {
+            newString=newString.concat(str[i]);
+        }
+        else if(newString != '')
+        {
+            arr[count]=newString;
+            count+=1;
+            newString="";
+        }
     }
+    return arr;
+    }
+    var metaid=$('#cust_id').data('id');
+    var arr=split(metaid);
     function myfunct(obj)
     {
     var name=obj.value;
-    document.getElementById('customer_id').value=IDs[name-1];
+    document.getElementById('customer_id').value=arr[(name-1)];
     }
 
     </script>
