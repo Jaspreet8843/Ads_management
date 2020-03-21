@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Billing</title>
+</head>
+<body>
+<table border="3">
+<form method="post"> {% csrf_token %}
+	<tr><td>Customer Name:</td><td><select name="customer_name">
+		{% for c in cust %}
+        <option value={{c.cust_name}}>{{c.cust_name}}</option>
+		{% endfor %}
+	</select><br></td></tr>
+	<tr><td>Display From:</td><td><input type="date" name="disp_from"><br></td></tr>
+	</table><p></p>
+<button type="submit">Send for approval</button>
+</form>
+</body>
+</html>

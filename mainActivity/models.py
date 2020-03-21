@@ -17,10 +17,12 @@ class prices(models.Model):
     price=models.FloatField()
 
 class adverts(models.Model):
-	cust_name=models.CharField(max_length=255)
-	cust_id=models.CharField(max_length=255)
-	ad_header=models.CharField(max_length=255)
-	ad_height=models.CharField(max_length=255)
-	ad_width=models.CharField(max_length=255)
-	ad_page=models.CharField(max_length=255)
+    cust_name=models.CharField(max_length=255)
+    cust_id=models.CharField(max_length=255)
+    ad_header=models.CharField(max_length=255)
+    ad_date=models.DateField()
+    ad_status=models.CharField(max_length=255, default="Pending for approval")
+    ad_height=models.CharField(max_length=255)
+    ad_width=models.CharField(max_length=255)
+    ad_page=models.CharField(max_length=255)
 

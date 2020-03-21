@@ -10,4 +10,5 @@ urlpatterns = [
     path('view_customers/',views.view_customers, name='view_customers'),
     path('add_advert/',views.add_advert,name='add_advert'),
     path('view_adverts',views.view_adverts,name='view_adverts'),
+    path('billing',views.billing,name='billing'),
 ]
