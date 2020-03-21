@@ -68,13 +68,16 @@ def add_advert(request):
     if request.method=='POST':
         cust_name=request.POST.get('customer_name')
         cust_id=request.POST.get('customer_id')
+        dis_from = request.POST.get('disp_from')
+        dis_till = request.POST.get('disp_till')
         ad_header=request.POST.get('ad_header')
         ad_height=request.POST.get('ad_height')
         ad_width=request.POST.get('ad_width')
         ad_page=request.POST.get('ad_page')
         if(cust_name != '' and cust_id != '' and ad_header != '' and ad_height != '' 
             and ad_width != ''):
-            obj=adverts(cust_name=cust_name,cust_id=cust_id,ad_header=ad_header,ad_height=ad_height,
+            customer_name=customer.objects.filter(cust_id=cust_id)
+            obj=adverts(cust_name=customer_name[0].cust_name,cust_id=cust_id,ad_date_from=dis_from,ad_date_till=dis_till,ad_header=ad_header,ad_height=ad_height,
                 ad_width=ad_width,ad_page=ad_page)
             obj.save()
         else:

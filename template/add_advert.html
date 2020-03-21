@@ -9,7 +9,7 @@
 <h1>Add Advertisement</h1>
 <table border="3">
 <form method="post"> {% csrf_token %}
-	<tr><td>Customer Name:</td><td><select name="customer_name" onchange="myfunct(this)">
+	<tr><td>Customer Name:</td><td><select name="customer_name" id="customer_name" onchange="myfunct(this)">
 		{% for c in name %}
         <option value="{{forloop.counter}}">{{c}}</option>
 		{% endfor %}
