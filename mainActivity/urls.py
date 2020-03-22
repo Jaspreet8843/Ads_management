@@ -11,4 +11,5 @@ urlpatterns = [
     path('add_advert/',views.add_advert,name='add_advert'),
     path('view_adverts',views.view_adverts,name='view_adverts'),
     path('billing',views.billing,name='billing'),
+    path('view_schedule',views.view_schedule, name='view_schedule'),
 ]

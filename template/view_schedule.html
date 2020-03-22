@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>view schedule</title>
+</head>
+<body>
+<h1>
+Select Date(s)
+</h1>
+<form method="post">
+    {% csrf_token %}
+    <table>
+        <tr><td>From:<input type="date" name="from"><br></td></tr>
+        <tr><td>Upto:<input type="date" name="till"><br></td></tr>
+    </table><br>
+    <button type="submit">View Schedule</button><br><br><br>
+    <table border="2">
+            <th>Customer name</th>
+            <th>Ad Date From</th>
+            <th>Ad Date Till</th>
+            <th>Description</th>
+            <th>Height</th>
+            <th>Width</th>
+            <th>Page</th>
+        {% for i in schedule %}
+        <tr>
+            <td>{{i.cust_name}}</td>
+            <td>{{i.ad_date_from}}</td>
+            <td>{{i.ad_date_till}}</td>
+            <td>{{i.ad_header}}</td>
+            <td>{{i.ad_height}}</td>
+            <td>{{i.ad_width}}</td>
+            <td>{{i.ad_page}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</form>
+</body>
+</html>
