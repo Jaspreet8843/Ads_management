@@ -10,6 +10,7 @@
 <table border="3">
 <form method="post"> {% csrf_token %}
 	<tr><td>Customer Name:</td><td><select name="customer_name" id="customer_name" onchange="myfunct(this)">
+		<option>--select</option>
 		{% for c in name %}
         <option value="{{forloop.counter}}">{{c}}</option>
 		{% endfor %}
