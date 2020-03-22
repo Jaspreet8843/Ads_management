@@ -107,7 +107,7 @@ def view_schedule(request):
     if request.method=="POST":
         date_from=request.POST.get('from')
         date_upto=request.POST.get('upto')
-        schedule=adverts.objects.filter(ad_date_from>=date_from) #and ad_date_from<=date_upto).order_by('-ad_date_from')
-        #schedule=adverts.objects.all().order_by('ad_date_from')
+        print(date_from,date_upto)
+        schedule=adverts.objects.filter(ad_date_from__gte=date_from , ad_date_from__lte=date_upto).order_by('-ad_date_from')
 
     return render(request, 'view_schedule.html', ({'schedule':schedule}))
