@@ -27,8 +27,8 @@
 	<th>Price(tax exclusive)</th>
 	<th>GST</th>
 	<th>TOTAL</th>
+	{% for i in ads %}
 	<tr>
-		{% for i in ads %}
 		<td>--</td>
 		<td>{{i.ad_header}}</td>
 		<td>{{i.ad_date_from}}</td>
@@ -37,8 +37,8 @@
 		<td>--</td>
 		<td>--</td>
 		<td><input type="number" name="total_price" width="100%"></td>
-		{% endfor %}
 	</tr>
+	{% endfor %}
 </table>
 <p align="right" style="padding-right: 20px;font-weight: bold;">GRAND TOTAL:</p>
 <button type="submit">SAVE</button>

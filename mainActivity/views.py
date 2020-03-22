@@ -102,7 +102,7 @@ def billing(request):
     cust=customer.objects.all()
     if request.method=='POST':
         cust_id=request.POST.get('customer_id')
-        ads=adverts.objects.filter(cust_id=cust_id)
+        ads=adverts.objects.filter(cust_id=cust_id).order_by('ad_date_from')
         return render(request, 'billing.html', ({'cust':cust,'ads':ads}))
     return render(request, 'billing.html', ({'cust':cust}))
 
