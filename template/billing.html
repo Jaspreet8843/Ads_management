@@ -19,7 +19,7 @@
 </form><br><br>
 <form method="post"> {% csrf_token %}
 <table border="3" align="center" width="100%">
-	<th>Sl No</th>
+	<th>Ad ID</th>
 	<th>Heading</th>
 	<th>From</th>
 	<th>Till</th>
@@ -29,7 +29,7 @@
 	<th>TOTAL</th>
 	{% for i in ads %}
 	<tr>
-		<td>--</td>
+		<td>{{i.id}}</td>
 		<td>{{i.ad_header}}</td>
 		<td>{{i.ad_date_from}}</td>
 		<td>{{i.ad_date_till}}</td>

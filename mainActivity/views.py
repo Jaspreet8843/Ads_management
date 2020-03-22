@@ -2,7 +2,7 @@ import json
 
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
-from .models import customer,prices,adverts
+from .models import customer,prices,adverts, rejected
 import time
 # Create your views here.
 
@@ -99,7 +99,7 @@ def view_adverts(request):
     return render(request,'view_adverts.html',({'advertisements':ads}))
 
 def billing(request):
-    cust=customer.objects.all()
+    cust=customer.objects.filter()
     if request.method=='POST':
         cust_id=request.POST.get('customer_id')
         ads=adverts.objects.filter(cust_id=cust_id).order_by('ad_date_from')
@@ -112,7 +112,40 @@ def view_schedule(request):
         date_from=request.POST.get('from')
         date_upto=request.POST.get('upto')
         if date_from!='' or date_upto!='':
-            schedule=adverts.objects.filter(ad_date_from__gte=date_from , ad_date_from__lte=date_upto).order_by('-ad_date_from')
+            schedule=adverts.objects.filter(ad_date_from__gte=date_from , ad_date_from__lte=date_upto).order_by('ad_date_from')
         else:
             schedule=adverts.objects.all().order_by('ad_date_from')
     return render(request, 'view_schedule.html', ({'schedule':schedule}))
+
+
+def pending_for_approval(request):
+    schedule = adverts.objects.filter(ad_status='Pending for approval').order_by('ad_date_from')
+    return render(request,'pending_for_approval.html',({'schedule':schedule}))
+
+
+def accept(request, no):
+    if request.method=="POST":
+        q=adverts.objects.get(id=no)
+        q.ad_status='Approved'
+        q.save()
+        return redirect('pending_for_approval')
+    ad=adverts.objects.filter(id=no)
+    schedule = adverts.objects.filter(ad_status='Approved',ad_date_from__gte=ad[0].ad_date_from, ad_date_from__lte=ad[0].ad_date_till).order_by('ad_date_from')
+    return render(request,'accept.html',({'ad':ad,'schedule':schedule}))
+
+
+def reject(request, no):
+    if request.method=="POST":
+        desc=request.POST.get('desc')
+        obj=rejected(ad_id=no,desc=desc)
+        obj.save()
+        q=adverts.objects.get(id=no)
+        q.ad_status='Disapproved'
+        q.save()
+        return redirect('pending_for_approval')
+    ad=adverts.objects.filter(id=no)
+    return render(request,'reject.html',({'ad':ad}))
+
+
+def view_rejected(request):
+    return render(request,'view_rejected.html',({}))
