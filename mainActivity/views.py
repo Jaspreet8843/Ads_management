@@ -100,6 +100,10 @@ def view_adverts(request):
 
 def billing(request):
     cust=customer.objects.all()
+    if request.method=='POST':
+        cust_id=request.POST.get('customer_id')
+        ads=adverts.objects.filter(cust_id=cust_id)
+        return render(request, 'billing.html', ({'cust':cust,'ads':ads}))
     return render(request, 'billing.html', ({'cust':cust}))
 
 def view_schedule(request):
