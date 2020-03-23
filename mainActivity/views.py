@@ -102,12 +102,30 @@ def billing(request):
     cust=customer.objects.filter()
     if request.method=='POST':
         cust_id=request.POST.get('customer_id')
-        ads=adverts.objects.filter(cust_id=cust_id).order_by('ad_date_from')
+        ads=adverts.objects.filter(cust_id=cust_id,ad_status="Approved").order_by('ad_date_from')
+        ads=ads.exclude(id__in=bills.objects.filter(cust_id=cust_id).values('ad_id'))
         return render(request, 'billing.html', ({'cust':cust,'ads':ads,'customer_id':cust_id}))
     return render(request, 'billing.html', ({'cust':cust}))
 
 
-def store_bills(request):
+def store_bills(request,cust_id):
+    if request.method=='POST':
+        ads=adverts.objects.filter(cust_id=cust_id,ad_status="Approved")
+        ads=ads.exclude(id__in=bills.objects.filter(cust_id=cust_id).values('ad_id'))
+        totals=[]
+        for i in range(ads.count()):
+            if request.POST.get(str(ads[i].id)) != '':
+                totals.append(ads[i].id)
+                totals.append(request.POST.get(str(ads[i].id)))
+        bill_date=time.strftime('%Y-%m-%d')
+        for i in range(0,len(totals),2):
+            bill_total = float(totals[i+1])
+            bill_price = round(bill_total/1.18,2)
+            bill_gst = round(bill_total-bill_price,2)
+            obj=bills(cust_id=cust_id,ad_id=totals[i],price=bill_price,gst=bill_gst,total=bill_total,
+                billing_date=bill_date)
+            obj.save()
+        return redirect('index')
     return render(request,'index.html')
 
 
