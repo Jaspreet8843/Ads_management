@@ -12,4 +12,8 @@ urlpatterns = [
     path('view_adverts',views.view_adverts,name='view_adverts'),
     path('billing',views.billing,name='billing'),
     path('view_schedule',views.view_schedule, name='view_schedule'),
+    path('pending_for_approval',views.pending_for_approval, name='pending_for_approval'),
+    path('accept/<int:no>',views.accept, name='accept'),
+    path('reject/<int:no>',views.reject, name='reject'),
+    path('view_rejected',views.view_rejected, name='view_rejected'),
 ]

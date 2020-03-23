@@ -27,3 +27,7 @@ class adverts(models.Model):
     ad_width=models.CharField(max_length=255)
     ad_page=models.CharField(max_length=255)
 
+class rejected(models.Model):
+    ad_id=models.IntegerField()
+    desc=models.CharField(max_length=255)
+
