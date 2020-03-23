@@ -31,3 +31,13 @@ class rejected(models.Model):
     ad_id=models.IntegerField()
     desc=models.CharField(max_length=255)
 
+class bills(models.Model):
+	cust_id=models.CharField(max_length=255)
+	ad_id=models.IntegerField(unique=True)
+	price=models.FloatField()
+	gst=models.FloatField()
+	total=models.FloatField()
+	billing_date=models.DateField()
+	bill_status=models.CharField(max_length=255, default="unpaid")
+
+

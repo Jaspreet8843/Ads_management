@@ -18,7 +18,8 @@
 	</table><p></p>
 <button type="submit">Generate Bill</button>
 </form><br><br>
-<form method="post"> {% csrf_token %}
+<form method="post" action="store_bills"> {% csrf_token %}
+	<p>CUSTOMER ID: {{customer_id}}</p><br>
 <table border="3" id="bill_table" align="center" width="100%">
 	<th>Ad ID</th>
 	<th>Heading</th>
@@ -59,7 +60,7 @@
     	var gst = obj.value*0.18;
     	var price = obj.value-gst;
     	var x = document.getElementById("bill_table").rows[obj.parentNode.parentNode.rowIndex].cells;
-    	x[5].innerHTML = price;
-    	x[6].innerHTML = gst;
+    	x[5].innerHTML = price.toFixed(2);
+    	x[6].innerHTML = gst.toFixed(2);
     }
 </script>

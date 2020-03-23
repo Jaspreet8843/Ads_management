@@ -2,7 +2,7 @@ import json
 
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
-from .models import customer,prices,adverts, rejected
+from .models import customer,prices,adverts, rejected,bills
 import time
 # Create your views here.
 
@@ -103,8 +103,13 @@ def billing(request):
     if request.method=='POST':
         cust_id=request.POST.get('customer_id')
         ads=adverts.objects.filter(cust_id=cust_id).order_by('ad_date_from')
-        return render(request, 'billing.html', ({'cust':cust,'ads':ads}))
+        return render(request, 'billing.html', ({'cust':cust,'ads':ads,'customer_id':cust_id}))
     return render(request, 'billing.html', ({'cust':cust}))
+
+
+def store_bills(request):
+    return render(request,'index.html')
+
 
 def view_schedule(request):
     schedule=[]
@@ -149,3 +154,4 @@ def reject(request, no):
 
 def view_rejected(request):
     return render(request,'view_rejected.html',({}))
+
