@@ -11,6 +11,7 @@ urlpatterns = [
     path('add_advert/',views.add_advert,name='add_advert'),
     path('view_adverts',views.view_adverts,name='view_adverts'),
     path('billing',views.billing,name='billing'),
+    path('view_bills',views.view_bills, name='view_bills'),
     path('store_bills/<str:cust_id>',views.store_bills,name='store_bills'),
     path('view_schedule',views.view_schedule, name='view_schedule'),
     path('pending_for_approval',views.pending_for_approval, name='pending_for_approval'),

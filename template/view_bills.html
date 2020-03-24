@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- <meta id="ad_id" data-id="{{ads.id|safe}}"> -->
+<head>
+    <meta charset="UTF-8">
+    <title>View Bills</title>
+</head>
+<body>
+<table border="3">
+    <form method="post"> {% csrf_token %}
+        <tr>
+            <td>Customer Name:</td>
+            <td><select id="customer_name" name="customer_name" onchange="myfunct(this)">
+                <option>--select--</option>
+                {% for c in cust %}
+                <option value={{c.cust_id}}>{{c.cust_name}}</option>
+                {% endfor %}
+            </select><br></td>
+        </tr>
+        <tr>
+            <td>Customer ID:</td>
+            <td><input id="customer_id" name="customer_id" type="text"><br></td>
+        </tr>
+</table>
+<p></p>
+<button type="submit">Generate Bill</button>
+</form><br><br>
+<table align="center"><tr><td>CUSTOMER NAME </td><td>: {{bill.0.cust_name}}</td></tr>
+    <tr><td>CUSTOMER ID </td><td>: {{bill.0.cust_id}}</td></tr></table><br>
+<table align="center" border="3" id="bill_table" width="100%">
+    <th>Ad ID</th>
+    <th>Heading</th>
+    <th>From</th>
+    <th>Till</th>
+    <th>Page No</th>
+    <th>Price(tax exclusive)</th>
+    <th>GST</th>
+    <th>TOTAL</th>
+    {% for i in bill %}
+    <tr>
+        <td>{{i.ad_id}}</td>
+        <td>{{i.ad_header}}</td>
+        <td>{{i.ad_date_from}}</td>
+        <td>{{i.ad_date_till}}</td>
+        <td>{{i.ad_page}}</td>
+        <td>{{i.price}}</td>
+        <td>{{i.gst}}</td>
+        <td>{{i.total}}</td>
+    </tr>
+    {% endfor %}
+    <tr></tr>
+</table>
+<br>
+
+<table align="right" border="0">
+    <td>
+        <button onclick="grand()"><p align="right" style="padding-right: 5px;font-weight: bold;">CALCULATE GRAND
+            TOTAL:</p></button>
+    </td>
+    <td><p align="left" id="grand_total" style="padding-right: 20px;font-weight: bold;">0</p></td>
+</table>
+</body>
+</html>
+
+<script>
+    function myfunct(obj)
+    {
+    var id=obj.value;
+    document.getElementById('customer_id').value=id;
+    }
+    function grand(){
+    	var sum = 0;
+    	var x = document.getElementById("bill_table").rows;
+    	for(var i=1;i<x.length;i++){
+    	console.log(x[i].cells[1])
+    		sum+=(parseFloat(x[i].item[1].innerHTML));
+    	}
+    	x = document.getElementById("grand_total");
+    	x.innerHTML = sum;
+
+    }
+
+</script>

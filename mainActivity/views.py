@@ -107,6 +107,15 @@ def billing(request):
         return render(request, 'billing.html', ({'cust':cust,'ads':ads,'customer_id':cust_id}))
     return render(request, 'billing.html', ({'cust':cust}))
 
+def view_bills(request):
+    cust=customer.objects.filter()
+    if request.method=='POST':
+        cust_id=request.POST.get('customer_id')
+        bill=adverts.objects.raw("""Select * from mainactivity_adverts ad, mainactivity_bills bill where bill.ad_id=ad.id
+         and ad.cust_id=%s""",[cust_id])
+        return render(request, 'view_bills.html', ({'bill':bill, 'cust':cust}))
+    return render(request, 'view_bills.html', ({'cust':cust}))
+
 
 def store_bills(request,cust_id):
     if request.method=='POST':
