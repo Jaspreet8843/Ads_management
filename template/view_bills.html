@@ -71,9 +71,8 @@
     function grand(){
     	var sum = 0;
     	var x = document.getElementById("bill_table").rows;
-    	for(var i=1;i<x.length;i++){
-    	console.log(x[i].cells[1])
-    		sum+=(parseFloat(x[i].item[1].innerHTML));
+    	for(var i=1;i<x.length-1;i++){
+    		sum+=parseFloat(x[i].cells[7].innerHTML);
     	}
     	x = document.getElementById("grand_total");
     	x.innerHTML = sum;
