@@ -18,4 +18,7 @@ urlpatterns = [
     path('accept/<int:no>',views.accept, name='accept'),
     path('reject/<int:no>',views.reject, name='reject'),
     path('view_rejected',views.view_rejected, name='view_rejected'),
+    path('pay_bills',views.pay_bills, name='pay_bills'),
+    path('pay_bills/<int:no>',views.pay_confirm, name='pay_confirm'),
+    path('view_paid_bills',views.view_paid_bills, name='view_paid_bills'),
 ]

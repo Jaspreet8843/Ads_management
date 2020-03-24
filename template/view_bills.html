@@ -23,11 +23,11 @@
         </tr>
 </table>
 <p></p>
-<button type="submit">Generate Bill</button>
+<button type="submit" >Generate Bill</button>
 </form><br><br>
 <table align="center"><tr><td>CUSTOMER NAME </td><td>: {{bill.0.cust_name}}</td></tr>
     <tr><td>CUSTOMER ID </td><td>: {{bill.0.cust_id}}</td></tr></table><br>
-<table align="center" border="3" id="bill_table" width="100%">
+<table align="center" border="3" id="bill_table" width="100%" onload="grand()">
     <th>Ad ID</th>
     <th>Heading</th>
     <th>From</th>
@@ -48,14 +48,12 @@
         <td>{{i.total}}</td>
     </tr>
     {% endfor %}
-    <tr></tr>
 </table>
 <br>
 
 <table align="right" border="0">
     <td>
-        <button onclick="grand()"><p align="right" style="padding-right: 5px;font-weight: bold;">CALCULATE GRAND
-            TOTAL:</p></button>
+        GRAND TOTAL:
     </td>
     <td><p align="left" id="grand_total" style="padding-right: 20px;font-weight: bold;">0</p></td>
 </table>
@@ -63,6 +61,7 @@
 </html>
 
 <script>
+    window.onload=grand;
     function myfunct(obj)
     {
     var id=obj.value;
@@ -71,7 +70,7 @@
     function grand(){
     	var sum = 0;
     	var x = document.getElementById("bill_table").rows;
-    	for(var i=1;i<x.length-1;i++){
+    	for(var i=1;i<x.length;i++){
     		sum+=parseFloat(x[i].cells[7].innerHTML);
     	}
     	x = document.getElementById("grand_total");

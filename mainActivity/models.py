@@ -42,4 +42,13 @@ class bills(models.Model):
 	billing_date=models.DateField()
 	bill_status=models.CharField(max_length=255, default="unpaid")
 
+class payments(models.Model):
+    cust_id=models.CharField(max_length=255)
+    bill_id=models.IntegerField()
+    payment_due=models.FloatField()
+    payment_amount=models.FloatField()
+    payment_mode=models.CharField(max_length=255)
+    payment_date=models.DateTimeField(default=timezone.localtime(timezone.now()))
+
+
 

@@ -2,7 +2,7 @@ import json
 
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
-from .models import customer,prices,adverts, rejected,bills
+from .models import customer,prices,adverts, rejected,bills,payments
 import time
 # Create your views here.
 
@@ -183,3 +183,48 @@ def view_rejected(request):
     reject = rejected.objects.raw("""SELECT * FROM mainactivity_adverts, mainactivity_rejected where 
         mainactivity_adverts.id=mainactivity_rejected.ad_id order by mainactivity_rejected.rej_date desc""")
     return render(request, 'view_rejected.html', ({'reject': reject}))
+
+def pay_bills(request):
+    cust=customer.objects.all()
+    if request.method == 'POST':
+        cust_id = request.POST.get('customer_id')
+        bill=bills.objects.filter(cust_id=cust_id)
+        sum=0
+        for i in bill:
+            sum+=i.total
+        try:
+            payment = payments.objects.get(cust_id=cust_id)
+            amount_due = sum - payment.payment_amount
+            amount_paid = payment.payment_amount
+            payment_date = payment.payment_date
+            payment_mode=payment.payment_mode
+        except:
+            amount_due = sum
+            amount_paid = 0
+            payment_date = "N/A"
+            payment_mode='N/A'
+
+        bill = adverts.objects.raw("""Select * from mainactivity_adverts ad, mainactivity_bills bill where bill.ad_id=ad.id
+             and ad.cust_id=%s""", [cust_id])
+        return render(request, 'pay_bills.html', ({'bill': bill, 'cust': cust, 'amount_due':amount_due,
+                                                   'amount_paid':amount_paid, 'payment_date':payment_date,
+                                                   'payment_mode':payment_mode}))
+    return render(request, 'pay_bills.html', ({'cust':cust}))
+
+def pay_confirm(request,no):
+    if request.method=="POST":
+        amount=request.POST.get('amount')
+        mode=request.POST.get('mode')
+        ad=adverts.objects.raw("""SELECT * FROM mainactivity_adverts where cust_id=%s and ad_status='Approved' or ad_status='partially paid'""",[no])
+        bill=bills.objects.raw("""SELECT * FROM mainactivity_bills where cust_id=%s and bill_status='Approved' or bill_status='partially paid'""",[no])
+
+        try:
+            payment = payments.object.get(cust_id=no)
+            payment.payment_due-=amount
+            payment.payment_amount+=amount
+            payment.payment_mode=mode
+            payment.save()
+
+
+def view_paid_bills(request):
+    return render(request, 'view_paid_bills.html', ({}))

@@ -26,6 +26,7 @@
 	<th>From</th>
 	<th>Till</th>
 	<th>Page No</th>
+	<th>Area</th>
 	<th>Price(tax exclusive)</th>
 	<th>GST</th>
 	<th>TOTAL</th>
@@ -36,6 +37,7 @@
 		<td>{{i.ad_date_from}}</td>
 		<td>{{i.ad_date_till}}</td>
 		<td>{{i.ad_page}}</td>
+		<td>{{ i.ad_height}}* {{i.ad_width }}</td>
 		<td>0</td>
 		<td>0</td>
 		<td><input type="number" name={{i.id}} onchange="calculate(this)"></td>
