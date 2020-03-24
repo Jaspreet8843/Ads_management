@@ -41,13 +41,13 @@
 		<td><input type="number" name={{i.id}} onchange="calculate(this)"></td>
 	</tr>
 	{% endfor %}
-</table>
-<table align="right" border="0">
-	<td><p align="right" style="padding-right: 20px;font-weight: bold;">GRAND TOTAL:</p></td>
-	<td><p id="grand_total" align="left" style="padding-right: 20px;font-weight: bold;">0</p></td>
-</table>
+</table><br>
 <button type="submit">SAVE</button>
 </form>
+<table align="right" border="0">
+	<td><button onclick="grand()"><p align="right" style="padding-right: 5px;font-weight: bold;">CALCULATE GRAND TOTAL:</p></button></td>
+	<td><p id="grand_total" align="left" style="padding-right: 20px;font-weight: bold;">0</p></td>
+</table>
 </body>
 </html>
 
@@ -63,7 +63,14 @@
     	var x = document.getElementById("bill_table").rows[obj.parentNode.parentNode.rowIndex].cells;
     	x[5].innerHTML = price.toFixed(2);
     	x[6].innerHTML = gst.toFixed(2);
+    }
+    function grand(){
+    	var sum = 0;
+    	var x = document.getElementById("bill_table").rows;
+    	for(var i=1;i<x.length;i++){
+    		sum+=(parseFloat(x[i].cells[5].innerHTML)+parseFloat(x[i].cells[6].innerHTML));
+    	}
     	x = document.getElementById("grand_total");
-    	x.innerHTML = parseFloat(x.textContent) + parseFloat(obj.value);
+    	x.innerHTML = sum;
     }
 </script>
