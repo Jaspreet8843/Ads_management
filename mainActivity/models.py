@@ -1,3 +1,4 @@
+from django.utils import timezone
 from django.db import models
 
 # Create your models here.
@@ -30,6 +31,7 @@ class adverts(models.Model):
 class rejected(models.Model):
     ad_id=models.IntegerField()
     desc=models.CharField(max_length=255)
+    rej_date=models.DateTimeField(default=timezone.localtime(timezone.now()))
 
 class bills(models.Model):
 	cust_id=models.CharField(max_length=255)

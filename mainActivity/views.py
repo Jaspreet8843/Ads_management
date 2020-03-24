@@ -171,5 +171,6 @@ def reject(request, no):
 
 
 def view_rejected(request):
-    return render(request,'view_rejected.html',({}))
-
+    reject = rejected.objects.raw("""SELECT * FROM mainactivity_adverts, mainactivity_rejected where 
+        mainactivity_adverts.id=mainactivity_rejected.ad_id order by mainactivity_rejected.rej_date desc""")
+    return render(request, 'view_rejected.html', ({'reject': reject}))
