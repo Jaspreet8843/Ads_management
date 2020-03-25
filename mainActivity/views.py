@@ -281,4 +281,6 @@ def pay_confirm(request, no):
 
 
 def view_paid_bills(request):
-    return render(request, 'view_paid_bills.html', ({}))
+    paid = rejected.objects.raw("""SELECT * FROM mainactivity_customer c, mainactivity_payments p where 
+            c.cust_id=p.cust_id order by p.payment_date desc""")
+    return render(request, 'view_paid_bills.html', ({'paid': paid}))
