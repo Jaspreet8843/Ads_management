@@ -31,7 +31,7 @@ class adverts(models.Model):
 class rejected(models.Model):
     ad_id=models.IntegerField()
     desc=models.CharField(max_length=255)
-    rej_date=models.DateTimeField(default=timezone.localtime(timezone.now()))
+    rej_date=models.DateTimeField(default=timezone.now)
 
 class bills(models.Model):
 	cust_id=models.CharField(max_length=255)
@@ -44,11 +44,10 @@ class bills(models.Model):
 
 class payments(models.Model):
     cust_id=models.CharField(max_length=255)
-    bill_id=models.IntegerField()
     payment_due=models.FloatField()
     payment_amount=models.FloatField()
     payment_mode=models.CharField(max_length=255)
-    payment_date=models.DateTimeField(default=timezone.localtime(timezone.now()))
+    payment_date=models.DateTimeField(default=timezone.now)
 
 
 
