@@ -2,6 +2,7 @@ from django.db.models import Q
 import datetime
 from django.shortcuts import render, redirect
 from .models import customer, prices, adverts, rejected, bills, payments
+from django.utils import timezone
 import time
 
 
@@ -11,7 +12,7 @@ def index(request):
     # c=customer.objects.filter(cust_type="govt")
     # p=prices(cust_type=c[0], price='10000')
 
-    return render(request, 'index.html')
+    return render(request, 'localsdirectory/index.html')
 
 
 # PRICES--------------------------------------------------------------------------------
@@ -235,13 +236,11 @@ def pay_confirm(request, no):
             sum += i.total
         try:
             amount = float(amount)
-            print(no)
             payment = payments.objects.get(cust_id=no)
-            print("sum ", sum, " amount ", amount, " = ", sum - amount)
             payment.payment_amount += amount
             payment.payment_due = sum - payment.payment_amount
             payment.payment_mode = mode
-            print(amount, payment.payment_amount, payment.payment_due)
+            payment.payment_date = datetime.datetime.now(tz=timezone.utc)
             if payment.payment_due < 1:
                 adverts.objects.filter(cust_id=no).filter(
                     Q(ad_status='Approved') | Q(ad_status='partially paid')).update(

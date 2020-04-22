@@ -1,5 +1,5 @@
 from django.urls import path
-
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from . import views
 urlpatterns = [
     path('',views.index, name='index'),
@@ -22,3 +22,4 @@ urlpatterns = [
     path('pay_bills/<str:no>',views.pay_confirm, name='pay_confirm'),
     path('view_paid_bills',views.view_paid_bills, name='view_paid_bills'),
 ]
+urlpatterns+=staticfiles_urlpatterns()
