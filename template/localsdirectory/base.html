@@ -1,0 +1,195 @@
+{% load static from static %}
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Yoga Studio Template">
+    <meta name="keywords" content="Yoga, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Local Directory | Template</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header Section Begin -->
+    <header class="header-section" style="padding-top:0;">
+        <div class="container-fluid">
+            <div class="logo">
+               <a href="/"><img src="{% static 'img/logo.png' %}" width="250" alt=""></a>
+            </div>
+            <nav class="main-menu mobile-menu" style="padding-top:2%;">
+                <ul>
+                    <li class="active"><a href="/">Home</a></li>
+                    <li class="dropdown" >
+                        <a class="dropdown-toggle"  data-toggle="dropdown" href="#">Customers
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu" style="background-color:#000000;">
+                            <li><a href="/add_customer">Add Customer</a></li>
+                            <li><a href="/view_customers">View Customers</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" style="color:#000000;">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Advertisements
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu" style="background-color:#000000;">
+                            <li><a href="add_advert">Add Advertisement</a></li>
+                            <li><a href="view_adverts">View Advertisements</a></li>
+                            <li><a href="pending_for_approval">Pending Advertisements</a></li>
+                            <li><a href="view_rejected">Rejected Advertisements</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Bills
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu" style="background-color:#000000;">
+                            <li><a href="/billing">Generate Bills</a></li>
+                            <li><a href="view_bills">View Bills</a></li>
+                            <li><a href="pay_bills">Pay Bills</a></li>
+                            <li><a href="view_paid_bills">View Paid Bills</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="view_schedule">Schedule</a></li>
+                </ul>
+            </nav>
+            <div class="header-right" style="padding-top:2%">
+                <!--div class="user-access">
+                    <a href="#">Register/</a>
+                    <a href="#">Login</a>
+                </div-->
+                <a href="#" class="primary-btn" style="padding:15px 30px;">Log in</a>
+            </div>
+            <div id="mobile-menu-wrap"></div>
+        </div>
+    </header>
+    <!-- Header End -->
+
+  {% block content %}
+    {% endblock %}
+
+
+
+    <!-- Footer Section Begin -->
+    <footer class="footer-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form action="#" class="newslatter-form">
+                        <input type="text" placeholder="Your email address">
+                        <button type="submit">Subscribe to our Newsletter</button>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="footer-widget">
+                        <h4>Usefull Links</h4>
+                        <ul>
+                            <li>About us</li>
+                            <li>Testimonials</li>
+                            <li>How it works</li>
+                            <li>Create an account</li>
+                            <li>Our Services</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="footer-widget">
+                        <h4>Categories</h4>
+                        <ul>
+                            <li>Hotels</li>
+                            <li>Restaurant</li>
+                            <li>Spa & resorts</li>
+                            <li>Concert & Events</li>
+                            <li>Bars & Pubs</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="footer-widget">
+                        <h4>Usefull Links</h4>
+                        <ul>
+                            <li>About us</li>
+                            <li>Testimonials</li>
+                            <li>How it works</li>
+                            <li>Create an account</li>
+                            <li>Our Services</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="footer-widget">
+                        <h4>From the Blog</h4>
+                        <div class="single-blog">
+                            <div class="blog-pic">
+                                <img src="{% static 'img/f-blog-1.jpg' %}" alt="">
+                            </div>
+                            <div class="blog-text">
+                                <h6>10 Best clubs in town</h6>
+                                <span>March 27, 2019</span>
+                            </div>
+                        </div>
+                        <div class="single-blog">
+                            <div class="blog-pic">
+                                <img src="{% static 'img/f-blog-2.jpg' %}" alt="">
+                            </div>
+                            <div class="blog-text">
+                                <h6>10 Best clubs in town</h6>
+                                <span>March 27, 2019</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row footer-bottom">
+                <div class="col-lg-5 order-2 order-lg-1">
+                    <div class="copyright"><p class="text-white">
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p></div>
+                </div>
+                <div class="col-lg-7 text-center text-lg-right order-1 order-lg-2">
+                    <div class="footer-menu">
+                        <a href="#">Home</a>
+                        <a href="#">Explore</a>
+                        <a href="#">More Cities</a>
+                        <a href="#">News</a>
+                        <a href="#">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Js Plugins -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/jquery.slicknav.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/mixitup.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+
+</html>

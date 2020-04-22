@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<!-- <meta id="ad_id" data-id="{{ads.id|safe}}"> -->
-<head>
-    <meta charset="UTF-8">
-    <title>Pay Bills</title>
-</head>
-<body>
+{% extends "localsdirectory/base.html" %}
+{% block content %}
+<div style="padding-top:8%; padding-bottom:8%;">
 <br>
-<a href="/">HOME</a><br><br>
 <table>
 
     <table border="3">
@@ -137,8 +131,8 @@
         <td><p align="left" id="grand_total" style="padding-right: 20px;font-weight: bold;">0</p></td>
     </table>
 
-</body>
-</html>
+</div>
+
 
 <script>
     window.onload=grand;
@@ -160,3 +154,4 @@
 
 
 </script>
+{% endblock %}
