@@ -3,57 +3,67 @@
 {% block content %}
 <style>
     th, td {
-  padding: 40px 0px 100px 40px;
+  padding: 20px;
   text-align: center;
 }
+
 </style>
-<section class="hero-section set-bg " data-setbg="{% static 'img/bg.jpg' %}" style="height:auto; color:#ffffff; padding:15% 5%; background-size:100%;">
-        <div class="container form-group container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="hero-text">
-                        <h1 style="color: white; margin:0px 40px;"  >
+<section class="hero-section set-bg " data-setbg="{% static 'img/bg.jpg' %}"
+         style="height:auto; color:#ffffff; padding:15% 5%; background-size:100%;">
+    <div class="container form-group container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="hero-text">
+                    <h1 style="color: white; margin:0px 40px;">
                         Select Date(s)
-                        </h1>
-                        <form method="post"  style="margin:0px;">
-                            {% csrf_token %}
-                            <table class="table-hover" width="100%" style="margin:0; padding:20%">
-                                <tr><td>From:<input type="date" class="form-control" name="from"><br></td>
-                                <td>Upto:<input type="date" class="form-control" name="upto"><br></td>
-                            <td>
-                                <button type="submit" class="primary-btn" style="width:200px;">View Schedule</button></td></tr><br><br><br></table>
-                            {% if schedule != '' %}
-                            <table width="100%" class="table table-hover" id="result" style="background-color:rgba(0,0,0,0.6);">
-                                <thead class="thead-dark">
-                                    <th>Customer name</th>
-                                    <th>Ad Date From</th>
-                                    <th>Ad Date Till</th>
-                                    <th>Description</th>
-                                    <th>Height</th>
-                                    <th>Width</th>
-                                    <th>Page</th>
-                                </thead>
-                                {% for i in schedule %}
-                                <tr>
-                                    <td>{{i.cust_name}}</td>
-                                    <td>{{i.ad_date_from}}</td>
-                                    <td>{{i.ad_date_till}}</td>
-                                    <td>{{i.ad_header}}</td>
-                                    <td>{{i.ad_height}}</td>
-                                    <td>{{i.ad_width}}</td>
-                                    <td>{{i.ad_page}}</td>
-                                </tr>
-                                {% endfor %}
-                            </table>
-                            {% endif %}
-                        </form>
-                    </div>
+                    </h1>
+                    <form method="post" style="margin:0px;">
+                        {% csrf_token %}
+                        <table  class="table-hover" style=" background-color:rgba(0,0,0,0.6); margin:80px 100px auto auto;"
+                               width="100%">
+                            <tr>
+                                <td>From:<input class="form-control" name="from" type="date"><br></td>
+                                <td>Upto:<input class="form-control" name="upto" type="date"><br></td>
+                                <td>
+                                    <button class="primary-btn" style="width:300px;" type="submit">View Schedule
+                                    </button>
+                                </td>
+                            </tr>
+                            </table><br><br><br>
+                        {% if schedule != '' %}
+                        <table class="table table-hover" id="result" style="margin-top:100px; background-color:rgba(0,0,0,0.6);"
+                               width="100%">
+                            <thead class="thead-dark">
+                            <th>Customer name</th>
+                            <th>Ad Date From</th>
+                            <th>Ad Date Till</th>
+                            <th>Description</th>
+                            <th>Height</th>
+                            <th>Width</th>
+                            <th>Page</th>
+                            </thead>
+                            {% for i in schedule %}
+                            <tr>
+                                <td>{{i.cust_name}}</td>
+                                <td>{{i.ad_date_from}}</td>
+                                <td>{{i.ad_date_till}}</td>
+                                <td>{{i.ad_header}}</td>
+                                <td>{{i.ad_height}}</td>
+                                <td>{{i.ad_width}}</td>
+                                <td>{{i.ad_page}}</td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                        {% endif %}
+                    </form>
                 </div>
-    </section>
+            </div>
+</section>
 {% if schedule != '' %}
 <script>
    var elmnt = document.getElementById("result");
     elmnt.scrollIntoView();
+
 
 </script>
 {% endif %}
