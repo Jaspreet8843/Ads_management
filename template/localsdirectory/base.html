@@ -35,7 +35,7 @@
             <div class="logo">
                <a href="/"><img src="{% static 'img/logo.png' %}" width="250" alt=""></a>
             </div>
-            <nav class="main-menu mobile-menu" style="padding-top:2%;">
+            <nav class="main-menu mobile-menu" style="padding-top:2%;" id="myNav">
                 <ul>
                     <li class="active"><a href="/">Home</a></li>
                     <li class="dropdown" >
@@ -191,5 +191,13 @@
     <script src="{% static 'js/main.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
 </body>
+<script>
+
+    $(function() {
+        $(".element").click(function() {
+            $(this).toggleClass("active");
+        });
+    });
+</script>
 
 </html>
