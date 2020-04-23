@@ -1,23 +1,29 @@
 {% extends "localsdirectory/base.html" %}
 {% load static from static %}
 {% block content %}
-<section class="hero-section set-bg " data-setbg="{% static 'img/bg.jpg' %}"  style="height:auto; color:#ffffff; padding:15% 5%;">
+<style>
+    th, td {
+  padding: 40px 0px 100px 40px;
+  text-align: center;
+}
+</style>
+<section class="hero-section set-bg " data-setbg="{% static 'img/bg.jpg' %}" style="height:auto; color:#ffffff; padding:15% 5%; background-size:100%;">
         <div class="container form-group container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="hero-text">
-                        <h1 style="color: white;"  >
+                        <h1 style="color: white; margin:0px 40px;"  >
                         Select Date(s)
                         </h1>
-                        <form method="post">
+                        <form method="post"  style="margin:0px;">
                             {% csrf_token %}
-                            <table>
-                                <tr><td>From:<input type="date" class="form-control" name="from"><br></td></tr>
-                                <tr><td>Upto:<input type="date" class="form-control" name="upto"><br></td></tr>
-                            </table><br>
-                            <button type="submit" class="primary-btn" style="width:200px;">View Schedule</button><br><br><br>
+                            <table class="table-hover" width="100%" style="margin:0; padding:20%">
+                                <tr><td>From:<input type="date" class="form-control" name="from"><br></td>
+                                <td>Upto:<input type="date" class="form-control" name="upto"><br></td>
+                            <td>
+                                <button type="submit" class="primary-btn" style="width:200px;">View Schedule</button></td></tr><br><br><br></table>
                             {% if schedule != '' %}
-                            <table width="100%" class="table table-hover" id="result">
+                            <table width="100%" class="table table-hover" id="result" style="background-color:rgba(0,0,0,0.6);">
                                 <thead class="thead-dark">
                                     <th>Customer name</th>
                                     <th>Ad Date From</th>
