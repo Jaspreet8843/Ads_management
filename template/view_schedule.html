@@ -1,21 +1,24 @@
 {% extends "localsdirectory/base.html" %}
+{% load static from static %}
 {% block content %}
-<section class="hero-section set-bg" >
-        <div class="container">
+<section class="hero-section set-bg " data-setbg="{% static 'img/bg.jpg' %}"  style="height:auto; color:#ffffff; padding:15% 5%;">
+        <div class="container form-group container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="hero-text">
-                        <h1 style="color: black;">
+                        <h1 style="color: white;"  >
                         Select Date(s)
                         </h1>
                         <form method="post">
                             {% csrf_token %}
                             <table>
-                                <tr><td>From:<input type="date" name="from"><br></td></tr>
-                                <tr><td>Upto:<input type="date" name="upto"><br></td></tr>
+                                <tr><td>From:<input type="date" class="form-control" name="from"><br></td></tr>
+                                <tr><td>Upto:<input type="date" class="form-control" name="upto"><br></td></tr>
                             </table><br>
-                            <button type="submit">View Schedule</button><br><br><br>
-                            <table border="2" width="100%">
+                            <button type="submit" class="primary-btn" style="width:200px;">View Schedule</button><br><br><br>
+                            {% if schedule != '' %}
+                            <table width="100%" class="table table-hover" id="result">
+                                <thead class="thead-dark">
                                     <th>Customer name</th>
                                     <th>Ad Date From</th>
                                     <th>Ad Date Till</th>
@@ -23,6 +26,7 @@
                                     <th>Height</th>
                                     <th>Width</th>
                                     <th>Page</th>
+                                </thead>
                                 {% for i in schedule %}
                                 <tr>
                                     <td>{{i.cust_name}}</td>
@@ -35,8 +39,16 @@
                                 </tr>
                                 {% endfor %}
                             </table>
+                            {% endif %}
                         </form>
                     </div>
                 </div>
     </section>
+{% if schedule != '' %}
+<script>
+   var elmnt = document.getElementById("result");
+    elmnt.scrollIntoView();
+
+</script>
+{% endif %}
 {% endblock %}

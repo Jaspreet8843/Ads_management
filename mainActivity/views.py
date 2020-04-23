@@ -150,7 +150,7 @@ def store_bills(request, cust_id):
 
 
 def view_schedule(request):
-    schedule = []
+    schedule = ''
     if request.method == "POST":
         date_from = request.POST.get('from')
         date_upto = request.POST.get('upto')
