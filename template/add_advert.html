@@ -1,31 +1,33 @@
-<!DOCTYPE html>
-<meta id="cust_id" data-id="{{id|safe}}">
+{% extends "localsdirectory/base.html" %}
+{% block content %}
+<section class="hero-section set-bg" >
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="hero-text">
+                        <h1 style="color:black;">Add Advertisement</h1>
+                        <table border="3">
+                        <form method="post"> {% csrf_token %}
+                            <tr><td>Customer Name:</td><td><select name="customer_name" id="customer_name" onchange="myfunct(this)">
+                                <option>--select--</option>
+                                {% for c in name %}
+                                <option value="{{forloop.counter}}">{{c}}</option>
+                                {% endfor %}
+                            </select><br></td></tr>
+                            <tr><td>Customer ID:</td><td><input type="text" id="customer_id" name="customer_id"><br></td></tr>
+                            <tr><td>Display From:</td><td><input type="date" name="disp_from"><br></td></tr>
+                            <tr><td>Display Till:</td><td><input type="date" name="disp_till"><br></td></tr>
+                            <tr><td>Header:</td><td><input type="text" name="ad_header"><br></td></tr>
+                            <tr><td>Height:</td><td><input type="text" name="ad_height"><br></td></tr>
+                            <tr><td>Width:</td><td><input type="text" name="ad_width"><br></td></tr>
+                            <tr><td>Page Number(optional):</td><td><input type="number" name="ad_page"><br></td></tr></table><p></p>
+                        <button type="submit">Send for approval</button>
+                        </form>
+                    </div>
+                </div>
+    </section>
+{% endblock %}
 
-<html>
-<head>
-	<title>Janambhumi</title>
-</head>
-<body>
-<h1>Add Advertisement</h1>
-<table border="3">
-<form method="post"> {% csrf_token %}
-	<tr><td>Customer Name:</td><td><select name="customer_name" id="customer_name" onchange="myfunct(this)">
-		<option>--select--</option>
-		{% for c in name %}
-        <option value="{{forloop.counter}}">{{c}}</option>
-		{% endfor %}
-	</select><br></td></tr>
-	<tr><td>Customer ID:</td><td><input type="text" id="customer_id" name="customer_id"><br></td></tr>
-	<tr><td>Display From:</td><td><input type="date" name="disp_from"><br></td></tr>
-	<tr><td>Display Till:</td><td><input type="date" name="disp_till"><br></td></tr>
-	<tr><td>Header:</td><td><input type="text" name="ad_header"><br></td></tr>
-	<tr><td>Height:</td><td><input type="text" name="ad_height"><br></td></tr>
-	<tr><td>Width:</td><td><input type="text" name="ad_width"><br></td></tr>
-	<tr><td>Page Number(optional):</td><td><input type="number" name="ad_page"><br></td></tr></table><p></p>
-<button type="submit">Send for approval</button>
-</form>
-</body>
-</html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
     function split(str)

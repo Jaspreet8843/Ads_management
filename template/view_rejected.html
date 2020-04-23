@@ -1,33 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>View rejected</title>
-</head>
-<body>
-<h1>Rejected Applications:</h1>
-<br>
-<table border="2" width="100%">
-    <tr>
-        <th>Rejection Date & Time</th>
-        <th>Advertisement ID</th>
-        <th>Customer Name</th>
-        <th>Customer ID</th>
-        <th>Heading</th>
-        <th>Comments</th>
-    </tr>
-    {% for i in reject %}
-    <tr>
-        <td>{{i.rej_date}}</td>
-        <td align="center">{{i.ad_id}}</td>
-        <td>{{i.cust_name}}</td>
-        <td>{{i.cust_id}}</td>
-        <td>{{i.ad_header}}</td>
-        <td>{{i.desc}}</td>
-    </tr>
+{% extends "localsdirectory/base.html" %}
+{% block content %}
+<section class="hero-section set-bg" >
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="hero-text">
+                        <h1 style="color:black;">Rejected Applications:</h1>
+                        <br>
+                        <table border="2" width="100%">
+                            <tr>
+                                <th>Rejection Date & Time</th>
+                                <th>Advertisement ID</th>
+                                <th>Customer Name</th>
+                                <th>Customer ID</th>
+                                <th>Heading</th>
+                                <th>Comments</th>
+                            </tr>
+                            {% for i in reject %}
+                            <tr>
+                                <td>{{i.rej_date}}</td>
+                                <td align="center">{{i.ad_id}}</td>
+                                <td>{{i.cust_name}}</td>
+                                <td>{{i.cust_id}}</td>
+                                <td>{{i.ad_header}}</td>
+                                <td>{{i.desc}}</td>
+                            </tr>
 
-    {% endfor %}
+                            {% endfor %}
 
-</table>
-</body>
-</html>
+                        </table>
+                    </div>
+                </div>
+    </section>
+{% endblock %}

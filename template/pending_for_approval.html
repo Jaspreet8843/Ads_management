@@ -1,36 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Pending for approval</title>
-</head>
-<body>
-<h1>Pending advertisements</h1>
-<form>
-    <table border="2" width="100%">
-            <th>Customer name</th>
-            <th>Ad Date From</th>
-            <th>Ad Date Till</th>
-            <th>Description</th>
-            <th>Height</th>
-            <th>Width</th>
-            <th>Page</th>
-            <th>Options</th>
-        {% for i in schedule %}
-        <tr>
-            <td>{{i.cust_name}}</td>
-            <td>{{i.ad_date_from}}</td>
-            <td>{{i.ad_date_till}}</td>
-            <td>{{i.ad_header}}</td>
-            <td>{{i.ad_height}}</td>
-            <td>{{i.ad_width}}</td>
-            <td>{{i.ad_page}}</td>
-            <td><a href="accept/{{i.id}}">Accept</a><br><a href="reject/{{i.id}}">Reject</a><br></td>
-        </tr>
-        {% endfor %}
-    </table>
+{% extends "localsdirectory/base.html" %}
+{% block content %}
+<section class="hero-section set-bg" >
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="hero-text">
+                        <h1 style="color:black">Pending advertisements</h1>
+                        <form>
+                            <table border="2" width="100%">
+                                    <th>Customer name</th>
+                                    <th>Ad Date From</th>
+                                    <th>Ad Date Till</th>
+                                    <th>Description</th>
+                                    <th>Height</th>
+                                    <th>Width</th>
+                                    <th>Page</th>
+                                    <th>Options</th>
+                                {% for i in schedule %}
+                                <tr>
+                                    <td>{{i.cust_name}}</td>
+                                    <td>{{i.ad_date_from}}</td>
+                                    <td>{{i.ad_date_till}}</td>
+                                    <td>{{i.ad_header}}</td>
+                                    <td>{{i.ad_height}}</td>
+                                    <td>{{i.ad_width}}</td>
+                                    <td>{{i.ad_page}}</td>
+                                    <td><a href="accept/{{i.id}}">Accept</a><br><a href="reject/{{i.id}}">Reject</a><br></td>
+                                </tr>
+                                {% endfor %}
+                            </table>
 
 
-</form>
-</body>
-</html>
+                        </form>
+                    </div>
+                </div>
+    </section>
+{% endblock %}

@@ -1,25 +1,37 @@
+{% extends "localsdirectory/base.html" %}
+{% block content %}
+<section class="hero-section set-bg" >
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="hero-text">
+                    	<h1 style="color:black;">View Customers</h1>
+                    	<table border="2" width="100%">
+                    	    <th>Customer Name</th>
+                    	    <th>Address</th>
+                    	    <th>Phone</th>
+                    	    <th>Type</th>
+                    	    <th>ID</th>
+                    	    {% for c in customers %}
+                    		    <tr>
+                    		    <td>{{c.cust_name}}</td>
+                    		    <td>{{c.cust_address}}</td>
+                    		    <td>{{c.cust_phone}}</td>
+                    		    <td>{{c.cust_type}}</td>
+                    		    <td>{{c.cust_id}}</td>
+                    		    </tr>
+                    	    {% endfor %}
+                    	</table>
+                    </div>
+                </div>
+    </section>
+{% endblock %}
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Janambhumi</title>
 </head>
 <body>
-<h1>View Customers</h1>
-<table border="2" width="100%">
-    <th>Customer Name</th>
-    <th>Address</th>
-    <th>Phone</th>
-    <th>Type</th>
-    <th>ID</th>
-    {% for c in customers %}
-	    <tr>
-	    <td>{{c.cust_name}}</td>
-	    <td>{{c.cust_address}}</td>
-	    <td>{{c.cust_phone}}</td>
-	    <td>{{c.cust_type}}</td>
-	    <td>{{c.cust_id}}</td>
-	    </tr>
-    {% endfor %}
-</table>
+
 </body>
 </html>
