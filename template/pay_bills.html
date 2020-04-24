@@ -37,8 +37,11 @@
                     </td>
                 </tr>
         </table>
+        {% if bill is not none %}
+        <div id="result">
             <p></p>
             </form><br><br>
+        <div class="container" style="width:50%; padding-top:5%;">
         <form action="pay_bills/{{bill.0.cust_id}}" method="POST">
             <table align="center" width="400px" class="table table-hover" id="result" style=" padding:0px; margin:100px auto; background-color:rgba(0,0,0,0.6);">
                 <tr>
@@ -55,7 +58,7 @@
                             Enter Amount:
                         </th>
                         <td>
-                            <input id="amount" name="amount" type="number">
+                            <input class="container" id="amount" name="amount" type="number">
                         </td>
                     </tr>
                     <tr>
@@ -63,20 +66,22 @@
                             Enter Payment Mode:
                         </th>
                         <td>
-                            <input id="mode" name="mode" type="text">
+                            <input class="container" id="mode" name="mode" type="text">
                         </td>
                     </tr>
                     <tr>
                         <td align="center" colspan="2" height="50px">
-                            <button type="submit">SUBMIT</button>
+                            <button class="container primary-btn" type="submit" style="font-size:20px; padding:20px 20px; border: 1px solid #FF5581;">SUBMIT</button>
                         </td>
                     </tr>
                 </table>
             </form>
+        </div>
             <br><br><br>
-            <h2 align="center">PREVIOUS PAYMENT DETAILS</h2>
+        <div CLASS="container" style="background-color:rgba(0,0,0,0.6); width:50%; padding:20px;">
+            <h2 align="center" style="color:white;">PREVIOUS PAYMENT DETAILS</h2>
             <form method="POST">
-                <table align="center" border="5" width="40%">
+                <table class="table table-hover" align="center" width="100%" >
                     <tr>
                         <th>
                             Amount Due:
@@ -112,9 +117,12 @@
                 </table>
 
             </form>
+            </div>
             <br>
-            <h2 align="center">BILL DETAILS</h2>
-            <table align="center" border="3" id="bill_table" onload="grand()" width="100%">
+        <div class="container" style="padding:20% 0px 0px 0px;">
+            <h2 align="center" style="color:white;">BILL DETAILS</h2>
+            <table class="table table-hover" style="background-color:rgba(0,0,0,0.6);" align="center" id="bill_table" onload="grand()" width="100%">
+                <thead class="thead-dark">
                 <th>Ad ID</th>
                 <th>Heading</th>
                 <th>From</th>
@@ -135,19 +143,26 @@
                     <td>{{i.total}}</td>
                 </tr>
                 {% endfor %}
-            </table>
             <br>
 
-            <table align="right" border="0">
-                <td>
+                <td colspan="7">
                     GRAND TOTAL:
                 </td>
-                <td><p align="left" id="grand_total" style="padding-right: 20px;font-weight: bold;">0</p></td>
+                <td><p align="left" id="grand_total" style="font-size:30px; padding-right: 20px;font-weight: bold; color:white;">0</p></td>
             </table>
-
+            </div>
+{% endif %}
     </div>
-
+    </div>
 </section>
+{% if schedule != '' %}
+<script>
+   var elmnt = document.getElementById("result");
+    elmnt.scrollIntoView();
+
+
+</script>
+{% endif %}
 <script>
     window.onload=grand;
     function myfunct(obj)
@@ -157,11 +172,12 @@
     }
     function grand(){
     	var sum = 0;
-    	var x = document.getElementById("bill_table").rows;
+    	var x = document.getElementById('bill_table').rows;
     	for(var i=1;i<x.length;i++){
     		sum+=parseFloat(x[i].cells[7].innerHTML);
     	}
     	x = document.getElementById("grand_total");
+    	console.log(sum);
     	x.innerHTML = sum;
 
     }
