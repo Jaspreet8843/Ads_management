@@ -22,7 +22,15 @@
     <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
 </head>
-
+<style>
+    hr{
+    margin:0;
+    border: 0;
+    height: 0;
+    border-top: 1px solid #999999;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+</style>
 <body>
     <!-- Page Preloder -->
     <div id="preloder">
@@ -40,31 +48,31 @@
                 <ul>
                     <li id="home"><a href="/">Home</a></li>
                     <li class="dropdown" id="customers">
-                        <a class="dropdown-toggle"  data-toggle="dropdown" href="#">Customers
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Customers
                             <span class="caret"></span></a>
-                        <ul class="dropdown-menu" style="background-color:#000000;">
-                            <li><a href="/add_customer">Add Customer</a></li>
-                            <li><a href="/view_customers">View Customers</a></li>
+                        <ul class="dropdown-menu" style="background-color:#454545;">
+                            <li style="padding:10px;"><a style="font-size:15px; line-height:normal;" href="/add_customer">Add Customer</a></li>
+                            <hr><li style="padding:10px;"><a style="font-size:15px; line-height:normal;" href="/view_customers">View Customers</a></li>
                         </ul>
                     </li>
-                    <li id="adv" class="dropdown" style="color:#000000;">
+                    <li id="adv" class="dropdown" style="color:#454545;">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Advertisements
                             <span class="caret"></span></a>
-                        <ul class="dropdown-menu" style="background-color:#000000;">
-                            <li><a href="/add_advert">Add Advertisement</a></li>
-                            <li><a href="/view_adverts">View Advertisements</a></li>
-                            <li><a href="/pending_for_approval">Pending Advertisements</a></li>
-                            <li><a href="/view_rejected">Rejected Advertisements</a></li>
+                        <ul class="dropdown-menu" style="background-color:#454545;">
+                            <li style="padding:10px;"><a style="font-size:15px; line-height:normal;" href="/add_advert">Add Advertisement</a></li>
+                            <hr><li style="padding:10px;"><a style="font-size:15px; line-height:normal;" href="/view_adverts">View Advertisements</a></li>
+                            <hr><li style="padding:10px;"><a style="font-size:15px; line-height:normal;" href="/pending_for_approval">Pending Advertisements</a></li>
+                            <hr><li style="padding:10px;"><a style="font-size:15px; line-height:normal;" href="/view_rejected">Rejected Advertisements</a></li>
                         </ul>
                     </li>
                     <li class="dropdown" id="bills">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Bills
                             <span class="caret"></span></a>
-                        <ul class="dropdown-menu" style="background-color:#000000;">
-                            <li><a href="/billing">Generate Bills</a></li>
-                            <li><a href="/view_bills">View Bills</a></li>
-                            <li><a href="/pay_bills">Pay Bills</a></li>
-                            <li><a href="/view_paid_bills">View Paid Bills</a></li>
+                        <ul class="dropdown-menu" style="background-color:#454545;">
+                            <li style="padding:10px;"><a style="font-size:15px; line-height:normal;" href="/billing">Generate Bills</a></li>
+                            <hr><li style="padding:10px;"><a style="font-size:15px; line-height:normal;" href="/view_bills">View Bills</a></li>
+                            <hr><li style="padding:10px;"><a style="font-size:15px; line-height:normal;" href="/pay_bills">Pay Bills</a></li>
+                            <hr><li style="padding:10px;"><a style="font-size:15px; line-height:normal;" href="/view_paid_bills">View Paid Bills</a></li>
                         </ul>
                     </li>
                     <li id="schedule"><a href="/view_schedule">Schedule</a></li>
