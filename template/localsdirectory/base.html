@@ -36,9 +36,10 @@
                <a href="/"><img src="{% static 'img/logo.png' %}" width="250" alt=""></a>
             </div>
             <nav class="main-menu mobile-menu" style="padding-top:2%;" id="myNav">
+
                 <ul>
-                    <li class="active"><a href="/">Home</a></li>
-                    <li class="dropdown" >
+                    <li id="home"><a href="/">Home</a></li>
+                    <li class="dropdown" id="customers">
                         <a class="dropdown-toggle"  data-toggle="dropdown" href="#">Customers
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu" style="background-color:#000000;">
@@ -46,7 +47,7 @@
                             <li><a href="/view_customers">View Customers</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown" style="color:#000000;">
+                    <li id="adv" class="dropdown" style="color:#000000;">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Advertisements
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu" style="background-color:#000000;">
@@ -56,7 +57,7 @@
                             <li><a href="/view_rejected">Rejected Advertisements</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown">
+                    <li class="dropdown" id="bills">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Bills
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu" style="background-color:#000000;">
@@ -66,15 +67,16 @@
                             <li><a href="/view_paid_bills">View Paid Bills</a></li>
                         </ul>
                     </li>
-                    <li><a href="/view_schedule">Schedule</a></li>
+                    <li id="schedule"><a href="/view_schedule">Schedule</a></li>
                 </ul>
+
             </nav>
             <div class="header-right" style="padding-top:2%">
                 <!--div class="user-access">
                     <a href="#">Register/</a>
                     <a href="#">Login</a>
                 </div-->
-                <a href="#" class="primary-btn" style="padding:15px 30px;">Log in</a>
+                <a href="#" class="primary-btn" style="padding:15px 30px;">Log out</a>
             </div>
             <div id="mobile-menu-wrap"></div>
         </div>
@@ -179,6 +181,12 @@
         </div>
     </footer>
     <!-- Footer Section End -->
+
+    <script>
+    window.onload = function(){
+    document.getElementById("{{tab}}").classList.add("active");
+    }
+    </script>
 
     <!-- Js Plugins -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
