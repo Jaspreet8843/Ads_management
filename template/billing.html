@@ -1,35 +1,49 @@
 {% extends "localsdirectory/base.html" %}
 {% load static from static %}
 {% block content %}
-<section class="hero-section set-bg" >
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="hero-text">
-                        <form action="#" class="filter-search">
-                            <div class="category-search">
-                            	<table border="3">
-                            	<form method="post"> {% csrf_token %}
-                            		<tr><td>Customer Name:</td><td><select name="customer_name" id="customer_name" onchange="myfunct(this)">
-                            			<option>--select--</option>
-                            			{% for c in cust %}
-                            	        <option value={{c.cust_id}}>{{c.cust_name}}</option>
-                            			{% endfor %}
-                            		</select><br></td></tr>
-                            		<tr><td>Customer ID:</td><td><input type="text" id="customer_id" name="customer_id"><br></td></tr>
-                            		</table><p></p>
-                            	<button type="submit">Generate Bill</button>
-                            	</form><br><br>
-                        </form>
-                    </div>
-                </div>
-            </div>
+<style>
+    th, td {
+  padding: 20px 5%;
+  text-align: left;
+</style>
+<section class="hero-section set-bg " data-setbg="{% static 'img/bg.jpg' %}"
+         style="height:auto; color:#ffffff; padding:5% 5%; background-size:100%;">
+        <div class="container" style="padding:10% 0%;">
+		<div class="hero-text">
+        <h1 style="color: white; margin:50px 0px 80px 80px;">
+                        Generate Bills
+                    </h1>
+        </div>
+
+        <table class="table-hover"
+               style="text-align:center; background-color:rgba(0,0,0,0.6); margin:0px 50px 50px 50px;"
+               width="90%;table-layout:fixed;">
+            <form method="post"> {% csrf_token %}
+                <tr>
+                    <td width="33%">Customer Name:
+                        <select class="form-control" id="customer_name" name="customer_name" onchange="myfunct(this)">
+                        <option>--select--</option>
+                        {% for c in cust %}
+                        <option value={{c.cust_id}}>{{c.cust_name}}</option>
+                        {% endfor %}
+                        </select>
+                    </td>
+                    <td>Customer ID:<input class="form-control" id="customer_id" name="customer_id" type="text"></td>
+                    <td width="25%">
+                        <button class="primary-btn" style="font-size:20px; padding:20px 20px; border: 1px solid #FF5581;" type="submit">
+                            View Bills
+                        </button>
+                    </td>
+                </tr>
+        </table></form>
+			{% if ads is not none %}
                 <div class="col-lg-12">
                     <div class="hero-text">
                         <form method="post" action="store_bills/{{customer_id}}"> {% csrf_token %}
-                        	<p>CUSTOMER ID: {{customer_id}}</p><br>
-                        <table border="3" id="bill_table" align="center" width="100%">
-                        	<th>Ad ID</th>
+                        	<p style="color:white; padding-top:20%">CUSTOMER ID: {{customer_id}}</p><br>
+                        <table id="bill_table" class="table table-hover" style="background-color:rgba(0,0,0,0.6);" align="center" id="bill_table" width="100%">
+                        	<thead class="thead-dark">
+							<th>Ad ID</th>
                         	<th>Heading</th>
                         	<th>From</th>
                         	<th>Till</th>
@@ -51,64 +65,24 @@
                         		<td><input type="number" name={{i.id}} onchange="calculate(this)"></td>
                         	</tr>
                         	{% endfor %}
+							<tr>
+								<td colspan="8">
+                    			GRAND TOTAL:
+                		</td>
+                			<td><p align="left" id="grand_total" style="font-size:30px; padding-right: 20px;font-weight: bold; color:white;">0</p></td>
+							</tr>
                         </table><br>
-                        <button type="submit">SAVE</button>
+                        <button class="primary-btn" type="submit" style="font-size:20px; padding:10px 40px; border: 1px solid #FF5581;">SAVE</button>
                         </form>
-                        <table align="right" border="0">
-                        	<td><button onclick="grand()"><p align="right" style="padding-right: 5px;font-weight: bold;">CALCULATE GRAND TOTAL:</p></button></td>
-                        	<td><p id="grand_total" align="left" style="padding-right: 20px;font-weight: bold;">0</p></td>
-                        </table>
                     </div>
             </div>
 
         </div>
+	{% endif %}
     </section>
-<!-- <table border="3">
-<form method="post"> {% csrf_token %}
-	<tr><td>Customer Name:</td><td><select name="customer_name" id="customer_name" onchange="myfunct(this)">
-		<option>--select--</option>
-		{% for c in cust %}
-        <option value={{c.cust_id}}>{{c.cust_name}}</option>
-		{% endfor %}
-	</select><br></td></tr>
-	<tr><td>Customer ID:</td><td><input type="text" id="customer_id" name="customer_id"><br></td></tr>
-	</table><p></p>
-<button type="submit">Generate Bill</button>
-</form><br><br>
-<form method="post" action="store_bills/{{customer_id}}"> {% csrf_token %}
-	<p>CUSTOMER ID: {{customer_id}}</p><br>
-<table border="3" id="bill_table" align="center" width="100%">
-	<th>Ad ID</th>
-	<th>Heading</th>
-	<th>From</th>
-	<th>Till</th>
-	<th>Page No</th>
-	<th>Area</th>
-	<th>Price(tax exclusive)</th>
-	<th>GST</th>
-	<th>TOTAL</th>
-	{% for i in ads %}
-	<tr>
-		<td>{{i.id}}</td>
-		<td>{{i.ad_header}}</td>
-		<td>{{i.ad_date_from}}</td>
-		<td>{{i.ad_date_till}}</td>
-		<td>{{i.ad_page}}</td>
-		<td>{{ i.ad_height}}* {{i.ad_width }}</td>
-		<td>0</td>
-		<td>0</td>
-		<td><input type="number" name={{i.id}} onchange="calculate(this)"></td>
-	</tr>
-	{% endfor %}
-</table><br>
-<button type="submit">SAVE</button>
-</form>
-<table align="right" border="0">
-	<td><button onclick="grand()"><p align="right" style="padding-right: 5px;font-weight: bold;">CALCULATE GRAND TOTAL:</p></button></td>
-	<td><p id="grand_total" align="left" style="padding-right: 20px;font-weight: bold;">0</p></td>
-</table> -->
-
 <script>
+	var elmnt = document.getElementById("bill_table");
+    elmnt.scrollIntoView();
     function myfunct(obj)
     {
     var id=obj.value;
@@ -118,14 +92,15 @@
     	var price = obj.value/1.18;
     	var gst = obj.value-price;
     	var x = document.getElementById("bill_table").rows[obj.parentNode.parentNode.rowIndex].cells;
-    	x[5].innerHTML = price.toFixed(2);
-    	x[6].innerHTML = gst.toFixed(2);
+    	x[6].innerHTML = price.toFixed(2);
+    	x[7].innerHTML = gst.toFixed(2);
+    	grand();
     }
     function grand(){
     	var sum = 0;
     	var x = document.getElementById("bill_table").rows;
-    	for(var i=1;i<x.length;i++){
-    		sum+=(parseFloat(x[i].cells[5].innerHTML)+parseFloat(x[i].cells[6].innerHTML));
+    	for(var i=1;i<x.length-1;i++){
+    		sum+=(parseFloat(x[i].cells[6].innerHTML)+parseFloat(x[i].cells[7].innerHTML));
     	}
     	x = document.getElementById("grand_total");
     	x.innerHTML = sum;

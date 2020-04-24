@@ -5,14 +5,15 @@
     th, td {
   padding: 20px 5%;
   text-align: left;
+
 </style>
 <section class="hero-section set-bg " data-setbg="{% static 'img/bg.jpg' %}"
          style="height:auto; color:#ffffff; padding:5% 5%; background-size:100%;">
     <div style="padding-top:8%; padding-bottom:8%;">
         <div class="hero-text">
-        <h1 style="color: white; margin:50px 0px 80px 80px;">
-                        Generate Bill
-                    </h1>
+            <h1 style="color: white; margin:50px 0px 80px 80px;">
+                Bill Payment
+            </h1>
         </div>
         <br>
 
@@ -23,16 +24,17 @@
                 <tr>
                     <td width="33%">Customer Name:
                         <select class="form-control" id="customer_name" name="customer_name" onchange="myfunct(this)">
-                        <option>--select--</option>
-                        {% for c in cust %}
-                        <option value={{c.cust_id}}>{{c.cust_name}}</option>
-                        {% endfor %}
+                            <option>--select--</option>
+                            {% for c in cust %}
+                            <option value={{c.cust_id}}>{{c.cust_name}}</option>
+                            {% endfor %}
                         </select>
                     </td>
                     <td>Customer ID:<input class="form-control" id="customer_id" name="customer_id" type="text"></td>
                     <td width="25%">
-                        <button class="primary-btn" style="font-size:20px; padding:20px 20px; border: 1px solid #FF5581;" type="submit">
-                            Generate Bill
+                        <button class="primary-btn"
+                                style="font-size:20px; padding:20px 20px; border: 1px solid #FF5581;" type="submit">
+                            View Bills
                         </button>
                     </td>
                 </tr>
@@ -41,118 +43,124 @@
         <div id="result">
             <p></p>
             </form><br><br>
-        <div class="container" style="width:50%; padding-top:5%;">
-        <form action="pay_bills/{{bill.0.cust_id}}" method="POST">
-            <table align="center" width="400px" class="table table-hover" id="result" style=" padding:0px; margin:100px auto; background-color:rgba(0,0,0,0.6);">
-                <tr>
-                    <td>CUSTOMER NAME</td>
-                    <td>: {{bill.0.cust_name}}</td>
-                </tr>
-                <tr>
-                    <td>CUSTOMER ID</td>
-                    <td>: {{bill.0.cust_id}}</td>
-                </tr>
-                {% csrf_token %}
-                    <tr>
-                        <th>
-                            Enter Amount:
-                        </th>
-                        <td>
-                            <input class="container" id="amount" name="amount" type="number">
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            Enter Payment Mode:
-                        </th>
-                        <td>
-                            <input class="container" id="mode" name="mode" type="text">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="center" colspan="2" height="50px">
-                            <button class="container primary-btn" type="submit" style="font-size:20px; padding:20px 20px; border: 1px solid #FF5581;">SUBMIT</button>
-                        </td>
-                    </tr>
-                </table>
-            </form>
-        </div>
+            <div class="container" style="width:50%; padding-top:5%;">
+                <form action="pay_bills/{{bill.0.cust_id}}" method="POST">
+                    <table align="center" class="table table-hover" id="result"
+                           style=" padding:0px; margin:100px auto; background-color:rgba(0,0,0,0.6);" width="400px">
+                        <tr>
+                            <td>CUSTOMER NAME</td>
+                            <td>: {{bill.0.cust_name}}</td>
+                        </tr>
+                        <tr>
+                            <td>CUSTOMER ID</td>
+                            <td>: {{bill.0.cust_id}}</td>
+                        </tr>
+                        {% csrf_token %}
+                        <tr>
+                            <th>
+                                Enter Amount:
+                            </th>
+                            <td>
+                                <input class="container" id="amount" name="amount" type="number">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Enter Payment Mode:
+                            </th>
+                            <td>
+                                <input class="container" id="mode" name="mode" type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center" colspan="2" height="50px">
+                                <button class="container primary-btn"
+                                        style="font-size:20px; padding:20px 20px; border: 1px solid #FF5581;"
+                                        type="submit">SUBMIT
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
             <br><br><br>
-        <div CLASS="container" style="background-color:rgba(0,0,0,0.6); width:50%; padding:20px;">
-            <h2 align="center" style="color:white;">PREVIOUS PAYMENT DETAILS</h2>
-            <form method="POST">
-                <table class="table table-hover" align="center" width="100%" >
+            <div CLASS="container" style="background-color:rgba(0,0,0,0.6); width:50%; padding:20px;">
+                <h2 align="center" style="color:white;">PREVIOUS PAYMENT DETAILS</h2>
+                <form method="POST">
+                    <table align="center" class="table table-hover" width="100%">
+                        <tr>
+                            <th>
+                                Amount Due:
+                            </th>
+                            <td>
+                                {{amount_due}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Amount Paid:
+                            </th>
+                            <td>
+                                {{amount_paid}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Last Payment Date:
+                            </th>
+                            <td>
+                                {{payment_date}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Last Payment Mode:
+                            </th>
+                            <td>
+                                {{payment_mode}}
+                            </td>
+                        </tr>
+                    </table>
+
+                </form>
+            </div>
+            <br>
+            <div class="container" style="padding:20% 0px 0px 0px;">
+                <h2 align="center" style="color:white;">BILL DETAILS</h2>
+                <table align="center" class="table table-hover" id="bill_table" onload="grand()"
+                       style="background-color:rgba(0,0,0,0.6);" width="100%">
+                    <thead class="thead-dark">
+                    <th>Ad ID</th>
+                    <th>Heading</th>
+                    <th>From</th>
+                    <th>Till</th>
+                    <th>Page No</th>
+                    <th>Price(tax exclusive)</th>
+                    <th>GST</th>
+                    <th>TOTAL</th>
+                    {% for i in bill %}
                     <tr>
-                        <th>
-                            Amount Due:
-                        </th>
-                        <td>
-                            {{amount_due}}
-                        </td>
+                        <td>{{i.ad_id}}</td>
+                        <td>{{i.ad_header}}</td>
+                        <td>{{i.ad_date_from}}</td>
+                        <td>{{i.ad_date_till}}</td>
+                        <td>{{i.ad_page}}</td>
+                        <td>{{i.price}}</td>
+                        <td>{{i.gst}}</td>
+                        <td>{{i.total}}</td>
                     </tr>
-                    <tr>
-                        <th>
-                            Amount Paid:
-                        </th>
-                        <td>
-                            {{amount_paid}}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            Last Payment Date:
-                        </th>
-                        <td>
-                            {{payment_date}}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            Last Payment Mode:
-                        </th>
-                        <td>
-                            {{payment_mode}}
-                        </td>
-                    </tr>
+                    {% endfor %}
+                    <br>
+
+                    <td colspan="7">
+                        GRAND TOTAL:
+                    </td>
+                    <td><p align="left" id="grand_total"
+                           style="font-size:30px; padding-right: 20px;font-weight: bold; color:white;">0</p></td>
                 </table>
-
-            </form>
             </div>
-            <br>
-        <div class="container" style="padding:20% 0px 0px 0px;">
-            <h2 align="center" style="color:white;">BILL DETAILS</h2>
-            <table class="table table-hover" style="background-color:rgba(0,0,0,0.6);" align="center" id="bill_table" onload="grand()" width="100%">
-                <thead class="thead-dark">
-                <th>Ad ID</th>
-                <th>Heading</th>
-                <th>From</th>
-                <th>Till</th>
-                <th>Page No</th>
-                <th>Price(tax exclusive)</th>
-                <th>GST</th>
-                <th>TOTAL</th>
-                {% for i in bill %}
-                <tr>
-                    <td>{{i.ad_id}}</td>
-                    <td>{{i.ad_header}}</td>
-                    <td>{{i.ad_date_from}}</td>
-                    <td>{{i.ad_date_till}}</td>
-                    <td>{{i.ad_page}}</td>
-                    <td>{{i.price}}</td>
-                    <td>{{i.gst}}</td>
-                    <td>{{i.total}}</td>
-                </tr>
-                {% endfor %}
-            <br>
-
-                <td colspan="7">
-                    GRAND TOTAL:
-                </td>
-                <td><p align="left" id="grand_total" style="font-size:30px; padding-right: 20px;font-weight: bold; color:white;">0</p></td>
-            </table>
-            </div>
-{% endif %}
-    </div>
+            {% endif %}
+        </div>
     </div>
 </section>
 {% if schedule != '' %}
@@ -161,15 +169,12 @@
     elmnt.scrollIntoView();
 
 
+
 </script>
 {% endif %}
+{% if bill is not none %}
 <script>
-    window.onload=grand;
-    function myfunct(obj)
-    {
-    var id=obj.value;
-    document.getElementById('customer_id').value=id;
-    }
+    grand();
     function grand(){
     	var sum = 0;
     	var x = document.getElementById("bill_table").rows;
@@ -181,10 +186,15 @@
 
     }
 
-
-
-
-
+</script>
+{% endif %}
+<script>
+    function myfunct(obj)
+    {
+    var id=obj.value;
+    document.getElementById('customer_id').value=id;
+    }
 
 </script>
+
 {% endblock %}
