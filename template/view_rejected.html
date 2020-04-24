@@ -1,20 +1,24 @@
 {% extends "localsdirectory/base.html" %}
+{% load static from static %}
 {% block content %}
-<section class="hero-section set-bg" >
+<section class="hero-section set-bg" data-setbg="{% static 'img/bg.jpg' %}"
+         style="height: auto; color:#ffffff; padding:15% 5%; background-size:100%; background-repeat: repeat;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="hero-text">
-                        <h1 style="color:black;">Rejected Applications:</h1>
+                        <h1 style="color:white;">Rejected Applications:</h1>
                         <br>
-                        <table border="2" width="100%">
+                        <table class="table table-hover" width="100%" style="margin-top:100px; background-color:rgba(0,0,0,0.6);">
                             <tr>
+                                <thead class="thead-dark">
                                 <th>Rejection Date & Time</th>
                                 <th>Advertisement ID</th>
                                 <th>Customer Name</th>
                                 <th>Customer ID</th>
                                 <th>Heading</th>
                                 <th>Comments</th>
+                                </thead>
                             </tr>
                             {% for i in reject %}
                             <tr>

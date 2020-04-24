@@ -1,22 +1,24 @@
 {% extends "localsdirectory/base.html" %}
+{% load static from static %}
 {% block content %}
-<section class="hero-section set-bg" >
+<section class="hero-section set-bg" data-setbg="{% static 'img/bg.jpg' %}"
+         style="color:#ffffff; padding:15% 5%; background-size:100%; background-repeat: repeat;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="hero-text">
-                    	<h1 style="color: black;">Add Customer</h1>
+                    	<h1 style="color: white;">Add Customer</h1>
                     	<form method="post"> {% csrf_token %}
-                    		Name:<input type="text" name="customer_name"><br>
-                    		Address:<input type="text" name="customer_address"><br>
-                    		Phone:<input type="text" name="customer_phone"><br>
-                    		Type:<select name="customer_type">
+                    		<input class="form-control" type="text" name="customer_name" placeholder="Name"><br>
+                    		<input class="form-control" type="text" name="customer_address" placeholder="Address"><br>
+                    		<input class="form-control" type="text" name="customer_phone" placeholder="Phone"><br>
+                    		<select class="form-control" name="customer_type">
                     			<option value="government">Government</option>
                     			<option value="private">Private</option>
                     			<option value="non_government">Non Government</option>
                     		</select><br>
-                    		ID:<input type="text" name="customer_id"><br>
-                    		<button type="submit">Add customer</button><br>
+                    		<input class="form-control" type="text" name="customer_id" placeholder="ID"><br>
+                    		<button class="primary-btn" type="submit">Add customer</button><br>
                     	</form>
                     </div>
                 </div>

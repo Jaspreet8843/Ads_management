@@ -1,27 +1,30 @@
 {% extends "localsdirectory/base.html" %}
+{% load static from static %}
 {% block content %}
-<section class="hero-section set-bg" >
+<section class="hero-section set-bg" data-setbg="{% static 'img/bg.jpg' %}"
+         style="height: auto; color:#ffffff; padding:15% 5%; background-size:100%; background-repeat: repeat;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="hero-text">
-                        <h1 style="color:black;">Add Advertisement</h1>
-                        <table border="3">
+                        <h1 style="color:white;">Add Advertisement</h1>
+                        <table class="table-hover" style=" background-color:rgba(0,0,0,0.6); margin:80px 100px auto auto;" width="100%">
                         <form method="post"> {% csrf_token %}
-                            <tr><td>Customer Name:</td><td><select name="customer_name" id="customer_name" onchange="myfunct(this)">
+                            <tr><td>Customer Name:</td><td><select class="form-control" name="customer_name" id="customer_name" onchange="myfunct(this)">
                                 <option>--select--</option>
                                 {% for c in name %}
                                 <option value="{{forloop.counter}}">{{c}}</option>
                                 {% endfor %}
                             </select><br></td></tr>
-                            <tr><td>Customer ID:</td><td><input type="text" id="customer_id" name="customer_id"><br></td></tr>
-                            <tr><td>Display From:</td><td><input type="date" name="disp_from"><br></td></tr>
-                            <tr><td>Display Till:</td><td><input type="date" name="disp_till"><br></td></tr>
-                            <tr><td>Header:</td><td><input type="text" name="ad_header"><br></td></tr>
-                            <tr><td>Height:</td><td><input type="text" name="ad_height"><br></td></tr>
-                            <tr><td>Width:</td><td><input type="text" name="ad_width"><br></td></tr>
-                            <tr><td>Page Number(optional):</td><td><input type="number" name="ad_page"><br></td></tr></table><p></p>
-                        <button type="submit">Send for approval</button>
+                            <tr><td>Customer ID:</td><td><input class="form-control" type="text" id="customer_id" name="customer_id"><br></td></tr>
+                            <tr><td>Display From:</td><td><input class="form-control" type="date" name="disp_from"><br></td></tr>
+                            <tr><td>Display Till:</td><td><input class="form-control" type="date" name="disp_till"><br></td></tr>
+                            <tr><td>Header:</td><td><input class="form-control" type="text" name="ad_header"><br></td></tr>
+                            <tr><td>Height:</td><td><input class="form-control" type="text" name="ad_height"><br></td></tr>
+                            <tr><td>Width:</td><td><input class="form-control" type="text" name="ad_width"><br></td></tr>
+                            <tr><td>Page Number(optional):</td><td><input class="form-control" type="number" name="ad_page"><br></td></tr>
+                        </table><p></p>
+                        <button class="primary-btn" type="submit">Send for approval</button>
                         </form>
                     </div>
                 </div>
