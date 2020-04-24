@@ -172,15 +172,16 @@
     }
     function grand(){
     	var sum = 0;
-    	var x = document.getElementById('bill_table').rows;
-    	for(var i=1;i<x.length;i++){
+    	var x = document.getElementById("bill_table").rows;
+    	for(var i=1;i<x.length-1;i++){
     		sum+=parseFloat(x[i].cells[7].innerHTML);
     	}
     	x = document.getElementById("grand_total");
-    	console.log(sum);
     	x.innerHTML = sum;
 
     }
+
+
 
 
 
