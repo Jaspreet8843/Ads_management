@@ -1,10 +1,3 @@
-<html>
-<head>
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.1/fullcalendar.min.css">
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.1/fullcalendar.min.js"></script>
-<script>
 $(document).ready(function() {
   $('#calendar').fullCalendar({
     header: {
@@ -12,7 +5,7 @@ $(document).ready(function() {
         center: 'title',
         right: 'month,agendaWeek,agendaDay,listWeek'
     },
-    defaultDate: '2018-11-16',
+	aspectRatio:2,
     navLinks: true,
     eventLimit: true,
     events: [{
@@ -48,9 +41,3 @@ $(document).ready(function() {
     ]
 });
 });
-
-</script></head>
-<body>
-<div id="calendar"></div>
-</body>
-</html>

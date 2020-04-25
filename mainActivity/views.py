@@ -11,7 +11,9 @@ import time
 def index(request):
     # c=customer.objects.filter(cust_type="govt")
     # p=prices(cust_type=c[0], price='10000')
-    return render(request, 'localsdirectory/index.html',({'tab':"home"}))
+    date_today=datetime.date.today()
+    today = adverts.objects.filter(ad_date_from__lte=date_today, ad_date_till__gte=date_today)
+    return render(request, 'localsdirectory/index.html',({'tab':"home",'today':today,'date':date_today}))
 
 
 # PRICES--------------------------------------------------------------------------------
