@@ -2,13 +2,13 @@
 {% load static from static %}
 {% block content %}
 <section class="hero-section set-bg" data-setbg="{% static 'img/bg.jpg' %}"
-         style="height: auto; color:#ffffff; padding:15% 5%; background-size:100%; background-repeat: repeat;">
+         style="height: auto; color:#ffffff; padding:15% 5% 5% 5%; background-size:100%; background-repeat: repeat;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="hero-text">
-                        <h1 style="color:white;">Add Advertisement</h1>
-                        <table class="table-hover" style=" background-color:rgba(0,0,0,0.6); margin:80px 100px auto auto;" width="100%">
+                        <h1 style="color:white;font-size: 300%">Add Advertisement</h1>
+                        <table class="table-hover" style=" background-color:rgba(0,0,0,0.6); margin:10px 100px auto auto;" width="100%">
                         <form method="post"> {% csrf_token %}
                             <tr><td>Customer Name:</td><td><select class="form-control" name="customer_name" id="customer_name" onchange="myfunct(this)">
                                 <option>--select--</option>

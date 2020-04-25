@@ -5,9 +5,22 @@
     th, td {
   padding: 20px;
   text-align: center;
+}
+.parallax {
+  height: 100%; 
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
 
+/* Turn off parallax scrolling for tablets and phones. Increase the pixels if needed */
+@media only screen and (max-device-width: 1366px) {
+  .parallax {
+    background-attachment: scroll;
+  }
+}
 </style>
-<section class="hero-section set-bg " data-setbg="{% static 'img/bg.jpg' %}"
+<section class="hero-section set-bg parallax" data-setbg="{% static 'img/bg.jpg' %}"
          style="height:auto; color:#ffffff; padding:15% 5% 5% 5%; background-size:100%;">
     <div class="container form-group container">
         <!-- <div class="row">
