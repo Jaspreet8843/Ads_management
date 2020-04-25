@@ -99,7 +99,8 @@ def add_advert(request):
         cust_id.append(c.cust_id)
     cust['name'] = cust_name
     cust['id'] = cust_id
-    return render(request, 'add_advert.html', (cust),({'tab':"adv"}))
+    cust['tab'] = "adv"
+    return render(request, 'add_advert.html', (cust))
 
 
 def view_adverts(request):
