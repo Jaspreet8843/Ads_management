@@ -102,6 +102,7 @@ def add_advert(request):
     cust['name'] = cust_name
     cust['id'] = cust_id
     cust['tab'] = "adv"
+    print(cust)
     return render(request, 'add_advert.html', (cust))
 
 

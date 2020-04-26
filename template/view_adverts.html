@@ -1,14 +1,31 @@
 {% extends "localsdirectory/base.html" %}
 {% load static from static %}
 {% block content %}
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" type="text/css">
+<link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.1.6/css/fixedHeader.dataTables.min.css" type="text/css">
+<style>
+    thead input {
+        width: 100%;
+    }
+    table{
+    opacity:.97;
+    }
+    td {
+    background-color: rgba(0,0,0,.7);
+    }
+ .dataTables_info,
+.dataTables_length {
+color: red;
+}
+</style>
 <section class="hero-section set-bg" data-setbg="{% static 'img/bg.jpg' %}"
-         style="height: auto; color:#ffffff; padding:15% 5% 5% 5%; background-size:100%; background-repeat: repeat;">
+         style="height: auto;font-color:white; color:#ffffff; padding:15% 5% 5% 5%; background-size:100%; background-repeat: repeat;">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="hero-text">
-                        <h1 style="color:white;font-size: 300%">View Advertisements</h1>
-                        <table class="table table-hover" width="100%" style="margin-top:20px; background-color:rgba(0,0,0,0.6);">
+                <div class="col-lg-12 hero-text">
+                    <h1 style="color:white;font-size: 300%">View Advertisements</h1>
+                    <div class="" style="background-color:rgba(255,255,255,0.6); padding:20px 50px">
+                        <table class="table table-hover" id="result" width="100%" style="margin-top:20px; background-color:rgba(0,0,0,0.6);">
                             <thead class="thead-dark">
                             <th>Customer Name</th>
                             <th>Customer ID</th>
@@ -31,4 +48,48 @@
                     </div>
                 </div>
     </section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'js/jquery.slicknav.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/mixitup.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/fixedheader/3.1.6/js/dataTables.fixedHeader.min.js"></script>
+<script>
+    $(document).ready(function() {
+    // Setup - add a text input to each footer cell
+    $('#result thead tr').clone(true).appendTo( '#result thead' );
+    $('#result thead tr:eq(1) th').each( function (i) {
+        var title = $(this).text();
+        $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+
+        $( 'input', this ).on( 'keyup change', function () {
+            if ( table.column(i).search() !== this.value ) {
+                table
+                    .column(i)
+                    .search( this.value )
+                    .draw();
+            }
+        } );
+    } );
+
+    var table = $('#result').DataTable(
+    {
+        orderCellsTop: true,
+        fixedHeader: true
+    } );
+} );
+  var table = $('#result').DataTable(
+    {
+        "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                $('td', nRow).css('background-color','255,255,255');
+        }
+    }
+        );
+table.destroy();
+</script>
 {% endblock %}
