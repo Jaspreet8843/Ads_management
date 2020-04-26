@@ -2,33 +2,6 @@
 {% load static from static %}
 {% block content %}
 
- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
-<!--OLD VERSION OF JQUERY. ONLY FOR CALENDAR-->
-
-
-
-
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.1/fullcalendar.min.js"></script>
-<script src="{% static 'js/calendar.js' %}"></script>
-<link rel="stylesheet" href="{% static 'css/fullcalendar.css' %}" type="text/css">
-<script>
-    $(document).ready(function() {
-  $('#calendar').fullCalendar({
-    left: 'prev,next today',
-    center: 'title',
-    right: 'month,agendaWeek,agendaDay',
-	theme:true
-  });
-});
-
-</script>
-<style>
-    .fc-scroller {
-  height: auto !important;
-}
-
-</style>
   <!-- Hero Section Begin -->
     <section class="hero-section set-bg" data-setbg="{% static 'img/bg.jpg' %}" style="color:white; padding-top:10%;">
         <div class="container" >
@@ -74,8 +47,6 @@
                             </div>
                             <button type="submit">Search Now</button>
                         </form> -->
-                    </div>
-                    <div id="calendar" style="color:white; text-align:right; width:50%; padding:20px; margin-left:100px; width:40%; background-color:rgba(0,0,0,0.6);"">
                     </div>
                 </div>
             </div>
