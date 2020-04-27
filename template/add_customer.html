@@ -3,10 +3,10 @@
 {% block content %}
 <section class="hero-section set-bg" data-setbg="{% static 'img/bg.jpg' %}"
          style="color:#ffffff; padding:15% 5% 5% 5%; background-size:100%; background-repeat: repeat;">
-        <div class="container" style="width:50%;">
+        <div class="container" style="width:40%;">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="hero-text">
+                    <div class="hero-text" align="center">
                     	<h1 style="color: white;font-size: 200%;">Add Customer</h1>
                     	<form method="post"> {% csrf_token %}
                     		<input class="form-control" type="text" name="customer_name" placeholder="Name"><br>

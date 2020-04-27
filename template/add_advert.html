@@ -16,7 +16,7 @@
                                 <option value="{{forloop.counter}}">{{c}}</option>
                                 {% endfor %}
                             </select><br></td></tr>
-                            <tr><td>Customer ID:</td><td><input class="form-control" type="text" id="customer_id" name="customer_id"><br></td></tr>
+                            <tr><td>Customer ID:</td><td><input class="form-control" type="text" id="customer_id" name="customer_id" disabled><br></td></tr>
                             <tr><td>Display From:</td><td><input class="form-control" type="date" name="disp_from"><br></td></tr>
                             <tr><td>Display Till:</td><td><input class="form-control" type="date" name="disp_till"><br></td></tr>
                             <tr><td>Header:</td><td><input class="form-control" type="text" name="ad_header"><br></td></tr>
@@ -65,7 +65,9 @@
     function myfunct(obj)
     {
     var id=obj.value;
+    //id="{{id}}";
     document.getElementById('customer_id').value=id;
+    console.log(id);
     }
 
     </script>
