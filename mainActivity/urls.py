@@ -21,5 +21,7 @@ urlpatterns = [
     path('pay_bills',views.pay_bills, name='pay_bills'),
     path('pay_bills/<str:no>',views.pay_confirm, name='pay_confirm'),
     path('view_paid_bills',views.view_paid_bills, name='view_paid_bills'),
+    path('logout',views.logout,name="logout"),
+    path('login',views.login,name="login"),
 ]
 urlpatterns+=staticfiles_urlpatterns()
