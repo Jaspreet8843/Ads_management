@@ -1,7 +1,22 @@
 {% extends "localsdirectory/base.html" %}
 {% load static from static %}
 {% block content %}
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" type="text/css">
+<link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.1.6/css/fixedHeader.dataTables.min.css" type="text/css">
 <style>
+    thead input {
+        width: 100%;
+    }
+    table{
+    opacity:.97;
+    }
+    td {
+    background-color: rgba(0,0,0,.7);
+    }
+
+input::placeholder {
+  font-size:14px;
+}
     th, td {
   padding: 20px 5%;
   text-align: left;
@@ -41,7 +56,8 @@
                     <div class="hero-text">
                         <form method="post" action="store_bills/{{customer_id}}"> {% csrf_token %}
                         	<p style="color:white; padding-top:20%">CUSTOMER ID: {{customer_id}}</p><br>
-                        <table id="bill_table" class="table table-hover" style="background-color:rgba(0,0,0,0.6);" align="center" id="bill_table" width="100%">
+                            <div style="background-color:rgba(255,255,255,0.6); padding:20px 50px">
+                        <table id="result" class="table table-hover" style="background-color:rgba(0,0,0,0.6);" align="center" id="bill_table" width="100%">
                         	<thead class="thead-dark">
 							<th>Ad ID</th>
                         	<th>Heading</th>
@@ -52,6 +68,7 @@
                         	<th>Price(tax exclusive)</th>
                         	<th>GST</th>
                         	<th>TOTAL</th>
+                            </thead>
                         	{% for i in ads %}
                         	<tr>
                         		<td>{{i.id}}</td>
@@ -65,14 +82,13 @@
                         		<td><input type="number" name={{i.id}} onchange="calculate(this)"></td>
                         	</tr>
                         	{% endfor %}
-							<tr>
-								<td colspan="8">
-                    			GRAND TOTAL:
-                		</td>
-                			<td><p align="left" id="grand_total" style="font-size:30px; padding-right: 20px;font-weight: bold; color:white;">0</p></td>
-							</tr>
-                        </table><br>
-                        <button class="primary-btn" type="submit" style="font-size:20px; padding:10px 40px; border: 1px solid #FF5581;">SAVE</button>
+
+                        </table></div><br>
+                		    <p align="right" style="font-size:20px; padding-right: 20px;font-weight: bold; color:white;">GRAND TOTAL:</p>
+                			<p align="right" id="grand_total" style="font-size:30px; padding-right: 20px;font-weight: bold; color:white;">0</p>
+                        <div style="text-align:right; padding-right:2%;">
+                            <button class="primary-btn" type="submit" style="font-size:20px; padding:15px 50px; border: 1px solid #FF5581;">SAVE</button>
+                        </div>
                         </form>
                     </div>
             </div>
@@ -90,7 +106,7 @@
 <script src="{% static 'js/main.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
 <script>
-	var elmnt = document.getElementById("bill_table");
+	var elmnt = document.getElementById("result");
     elmnt.scrollIntoView();
     function myfunct(obj)
     {
@@ -100,19 +116,55 @@
     function calculate(obj){
     	var price = obj.value/1.18;
     	var gst = obj.value-price;
-    	var x = document.getElementById("bill_table").rows[obj.parentNode.parentNode.rowIndex].cells;
+    	var x = document.getElementById("result").rows[obj.parentNode.parentNode.rowIndex].cells;
     	x[6].innerHTML = price.toFixed(2);
     	x[7].innerHTML = gst.toFixed(2);
     	grand();
     }
     function grand(){
     	var sum = 0;
-    	var x = document.getElementById("bill_table").rows;
-    	for(var i=1;i<x.length-1;i++){
+    	var x = document.getElementById("result").rows;
+
+    	for(var i=2;i<x.length;i++){
     		sum+=(parseFloat(x[i].cells[6].innerHTML)+parseFloat(x[i].cells[7].innerHTML));
     	}
     	x = document.getElementById("grand_total");
     	x.innerHTML = sum;
     }
+</script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/fixedheader/3.1.6/js/dataTables.fixedHeader.min.js"></script>
+<script>
+    $(document).ready(function() {
+    // Setup - add a text input to each footer cell
+    $('#result thead tr').clone(true).appendTo( '#result thead' );
+    $('#result thead tr:eq(1) th').each( function (i) {
+        var title = $(this).text();
+        $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+
+        $( 'input', this ).on( 'keyup change', function () {
+            if ( table.column(i).search() !== this.value ) {
+                table
+                    .column(i)
+                    .search( this.value )
+                    .draw();
+            }
+        } );
+    } );
+
+    var table = $('#result').DataTable(
+    {
+        orderCellsTop: true,
+        fixedHeader: true
+    } );
+} );
+  var table = $('#result').DataTable(
+    {
+        "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                $('td', nRow).css('background-color','255,255,255');
+        }
+    }
+        );
+table.destroy();
 </script>
 {% endblock %}
