@@ -1,8 +1,7 @@
 {% extends "localsdirectory/base.html" %}
 {% load static from static %}
 {% block content %}
-
-
+<link rel="stylesheet" href="{% static 'css/fullcalendar.css' %}" type="text/css">
 <style>
     .fc-scroller {
   height: auto !important;
@@ -320,11 +319,8 @@
             </div>
         </div>
     </section>
-
-    <!-- App Section End -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
-<!--OLD VERSION OF JQUERY. ONLY FOR CALENDAR-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
 <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
 <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
 <script src="{% static 'js/jquery.slicknav.js' %}"></script>
@@ -335,17 +331,7 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.1/fullcalendar.min.js"></script>
 <script src="{% static 'js/calendar.js' %}"></script>
-<link rel="stylesheet" href="{% static 'css/fullcalendar.css' %}" type="text/css">
-<script>
-    $(document).ready(function() {
-  $('#calendar').fullCalendar({
-    left: 'prev,next today',
-    center: 'title',
-    right: 'month,agendaWeek,agendaDay',
-	theme:true
-  });
-});
 
-</script>
+    <!-- App Section End -->
 
 {% endblock %}
