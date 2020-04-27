@@ -2,20 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21583f73-0e75-4542-9f53-186ffcab39f1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/mainActivity/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainActivity/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/add_advert.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/add_advert.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/add_customer.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/add_customer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/billing.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/billing.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/localsdirectory/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/localsdirectory/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/localsdirectory/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/localsdirectory/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/pay_bills.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/pay_bills.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/pending_for_approval.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/pending_for_approval.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/reject.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/reject.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/template/view_adverts.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/view_adverts.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/template/view_bills.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/view_bills.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/view_customers.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/view_customers.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/view_paid_bills.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/view_paid_bills.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/view_rejected.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/view_rejected.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/template/view_schedule.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/view_schedule.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -58,8 +46,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/template/view_paid_bills.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
+            <state relative-caret-position="465">
               <caret line="43" column="58" selection-start-line="43" selection-start-column="58" selection-end-line="43" selection-end-column="58" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/template/add_advert.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="397">
+              <caret line="66" column="2" selection-start-line="66" selection-start-column="2" selection-end-line="66" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -67,20 +64,14 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/template/view_schedule.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
-              <caret line="89" column="58" selection-start-line="89" selection-start-column="58" selection-end-line="89" selection-end-column="58" />
+            <state relative-caret-position="363">
+              <caret line="49" column="123" lean-forward="true" selection-start-line="49" selection-start-column="94" selection-end-line="49" selection-end-column="123" />
               <folding>
                 <element signature="n#style#0;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#table#0;n#form#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/template/add_advert.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="66" column="2" selection-start-line="66" selection-start-column="2" selection-end-line="66" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -92,6 +83,41 @@
               <caret line="110" column="39" selection-start-line="110" selection-start-column="39" selection-end-line="110" selection-end-column="39" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/template/view_adverts.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="30" column="48" lean-forward="true" selection-start-line="30" selection-start-column="48" selection-end-line="30" selection-end-column="48" />
+              <folding>
+                <element signature="n#style#0;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/template/view_bills.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="34" column="27" selection-start-line="34" selection-start-column="27" selection-end-line="34" selection-end-column="27" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#table#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#0;n#form#0;n#table#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#td#2;n#tr#0;n#form#0;n#table#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#td#0;n#section#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -118,14 +144,15 @@
       <find>cat-1</find>
       <find>cat-2</find>
       <find>hero-bg</find>
-      <find>result</find>
       <find>gener</find>
       <find>tab</find>
       <find>classList</find>
       <find>filter</find>
       <find>date</find>
       <find>name</find>
+      <find>result</find>
       <find>time</find>
+      <find>bill_table</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -148,7 +175,6 @@
         <option value="$PROJECT_DIR$/mainActivity/urls.py" />
         <option value="$PROJECT_DIR$/template/localsdirectory/av.html" />
         <option value="$PROJECT_DIR$/template/localsdirectory/base.html" />
-        <option value="$PROJECT_DIR$/template/view_adverts.html" />
         <option value="$PROJECT_DIR$/template/billing.html" />
         <option value="$PROJECT_DIR$/template/view_customers.html" />
         <option value="$PROJECT_DIR$/template/add_customer.html" />
@@ -157,11 +183,13 @@
         <option value="$PROJECT_DIR$/template/pending_for_approval.html" />
         <option value="$PROJECT_DIR$/template/reject.html" />
         <option value="$PROJECT_DIR$/template/view_rejected.html" />
-        <option value="$PROJECT_DIR$/template/view_bills.html" />
         <option value="$PROJECT_DIR$/template/pay_bills.html" />
         <option value="$PROJECT_DIR$/template/view_paid_bills.html" />
-        <option value="$PROJECT_DIR$/template/view_schedule.html" />
         <option value="$PROJECT_DIR$/template/add_advert.html" />
+        <option value="$PROJECT_DIR$/template/view_adverts.html" />
+        <option value="$PROJECT_DIR$/template/schedule_iframe.html" />
+        <option value="$PROJECT_DIR$/template/view_schedule.html" />
+        <option value="$PROJECT_DIR$/template/view_bills.html" />
       </list>
     </option>
   </component>
@@ -293,7 +321,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.33742332" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.33742332" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -306,6 +334,25 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18898809" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.33742332" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3297546" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.20398773" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.3297546" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit" />
@@ -405,19 +452,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/template/view_adverts.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="59" selection-start-line="50" selection-end-line="59" />
-          <folding>
-            <element signature="n#style#0;n#section#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/template/localsdirectory/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="347">
@@ -499,37 +533,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/template/view_bills.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="115" column="58" selection-start-line="115" selection-start-column="58" selection-end-line="115" selection-end-column="58" />
-          <folding>
-            <element signature="n#table#0;n#div#0;n#section#0;n#!!top" />
-            <element signature="n#form#0;n#table#0;n#div#0;n#section#0;n#!!top" />
-            <element signature="n#style#0;n#button#0;n#td#2;n#tr#0;n#form#0;n#table#0;n#div#0;n#section#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#table#0;n#div#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#td#1;n#thead#0;n#table#0;n#div#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/template/view_schedule.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="89" column="58" selection-start-line="89" selection-start-column="58" selection-end-line="89" selection-end-column="58" />
-          <folding>
-            <element signature="n#style#0;n#section#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/template/view_paid_bills.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="43" column="58" selection-start-line="43" selection-start-column="58" selection-end-line="43" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/template/pay_bills.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3247">
@@ -548,6 +551,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/template/schedule_iframe.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/view_paid_bills.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="43" column="58" selection-start-line="43" selection-start-column="58" selection-end-line="43" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mainActivity/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
@@ -560,8 +577,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/template/add_advert.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
+        <state relative-caret-position="397">
           <caret line="66" column="2" selection-start-line="66" selection-start-column="2" selection-end-line="66" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/view_adverts.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="30" column="48" lean-forward="true" selection-start-line="30" selection-start-column="48" selection-end-line="30" selection-end-column="48" />
+          <folding>
+            <element signature="n#style#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/view_schedule.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="49" column="123" lean-forward="true" selection-start-line="49" selection-start-column="94" selection-end-line="49" selection-end-column="123" />
+          <folding>
+            <element signature="n#style#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#form#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/view_bills.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="34" column="27" selection-start-line="34" selection-start-column="27" selection-end-line="34" selection-end-column="27" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#form#0;n#table#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#td#2;n#tr#0;n#form#0;n#table#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#td#0;n#section#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
