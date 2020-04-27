@@ -15,6 +15,17 @@ def index(request):
     today = adverts.objects.filter(ad_date_from__lte=date_today, ad_date_till__gte=date_today)
     return render(request, 'localsdirectory/index.html',({'tab':"home",'today':today,'date':date_today}))
 
+def login(request):
+    if request.method=='POST':
+        ad_id=request.POST.get('admin_id')
+        ad_pass=request.POST.get('admin_pass')
+        if ad_id=="admin" and ad_pass=="admin":
+            return redirect('index')
+    return render(request,'login.html')
+
+def logout(request):
+    return redirect('login')
+
 
 # PRICES--------------------------------------------------------------------------------
 def view_prices(request):
