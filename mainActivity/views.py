@@ -12,7 +12,7 @@ def index(request):
     # c=customer.objects.filter(cust_type="govt")
     # p=prices(cust_type=c[0], price='10000')
     date_today=datetime.date.today()
-    today = adverts.objects.filter(ad_date_from__lte=date_today, ad_date_till__gte=date_today)
+    today = adverts.objects.filter(ad_date_from__lte=date_today, ad_date_till__gte=date_today, ad_status='approved')
     return render(request, 'localsdirectory/index.html',({'tab':"home",'today':today,'date':date_today}))
 
 def login(request):
@@ -171,10 +171,10 @@ def view_schedule(request):
         date_from = request.POST.get('from')
         date_upto = request.POST.get('upto')
         if date_from != '' or date_upto != '':
-            schedule = adverts.objects.filter(ad_date_from__gte=date_from, ad_date_from__lte=date_upto).order_by(
+            schedule = adverts.objects.filter(ad_date_from__gte=date_from, ad_date_from__lte=date_upto, ad_status='approved').order_by(
                 'ad_date_from')
         else:
-            schedule = adverts.objects.all().order_by('ad_date_from')
+            schedule = adverts.objects.filter(ad_status='approved').order_by('ad_date_from')
     return render(request, 'view_schedule.html', ({'schedule': schedule,'tab':"schedule"}))
 
 
