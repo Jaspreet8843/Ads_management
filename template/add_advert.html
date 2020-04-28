@@ -13,7 +13,7 @@
                             <tr><td>Customer Name:</td><td><select class="form-control" name="customer_name" id="customer_name" onchange="myfunct(this)">
                                 <option>--select--</option>
                                 {% for c in name %}
-                                <option value="{{forloop.counter}}">{{c}}</option>
+                                <option value="{{ forloop.counter }}">{{c}}</option>
                                 {% endfor %}
                             </select><br></td></tr>
                             <tr><td>Customer ID:</td><td><input class="form-control" type="text" id="customer_id" name="customer_id" disabled><br></td></tr>
@@ -39,35 +39,17 @@
 <script src="{% static 'js/main.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
 <script>
-    function split(str)
-    {
-    var arr=[];
-    var count=0;
-    var newString="";
-    for(var i=1; str[i]!=']';i++)
-    {
-        if(str[i]!='\'' && str[i]!=',' && str[i]!=' ')
-        {
-            newString=newString.concat(str[i]);
-        }
-        else if(newString != '')
-        {
-            arr[count]=newString;
-            count+=1;
-            newString="";
-        }
-    }
-    return arr;
-    }
-    var metaid=$("#cust_id").data('id');
-    console.log(metaid);
-    var arr=split(metaid);
     function myfunct(obj)
     {
-    var id=obj.value;
-    //id="{{id}}";
-    document.getElementById('customer_id').value=id;
-    console.log(id);
+    var index=obj.value;
+    {% for i in id %}
+    var j="{{forloop.counter}}";
+    console.log(j);
+        {% if j == index %}
+        console.log("i "+index)
+        document.getElementById('customer_id').value={{i}};
+        {% endif %}
+    {% endfor %}
     }
 
     </script>
