@@ -51,7 +51,7 @@ class payments(models.Model):
 
 class users(models.Model):
     user_name=models.CharField(max_length=255)
-    user_id=models.CharField(max_length=255)
+    user_id=models.CharField(max_length=255,unique=True)
     user_pass=models.CharField(max_length=255)
 
 
