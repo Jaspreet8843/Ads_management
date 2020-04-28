@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
+
     <meta charset="UTF-8">
     <meta name="description" content="Yoga Studio Template">
     <meta name="keywords" content="Yoga, unica, creative, html">
@@ -23,6 +24,22 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
 
     </head>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" type="text/css">
+<link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.1.6/css/fixedHeader.dataTables.min.css" type="text/css">
+<style>
+    thead input {
+        width: 100%;
+    }
+    table{
+    opacity:.97;
+    }
+    td {
+    background-color: rgba(0,0,0,.7);
+    }
+
+input::placeholder {
+  font-size:14px;
+}
 <style>
     hr{
     margin:0;
@@ -55,7 +72,7 @@
     <!--block here-->
 
     <section class="hero-section set-bg" data-setbg="{% static 'img/bg.jpg' %}"
-         style="color:#ffffff; padding:15% 0% 0% 0%; background-size:100%; background-repeat: repeat;">
+         style="color:#ffffff; padding:15% 0% 0% 0%; background-size:100%; background-repeat: repeat; height:auto">
         <div class="container" style="width:30%;">
             <div class="row">
                 <div class="col-lg-12">
@@ -68,29 +85,31 @@
                             <button class="btn btn-primary" type="submit" style="background-color: #ff5581;border-color: #ff5581;">REGISTER</button><br>
                         </form>
                     </div>
-                        <div style="background-color:rgba(255,255,255,0.8); padding:20px 50px;margin-top: 10%;width: 200%" align="center">
-                            <h1 style="color:black;font-size: 200%;">USERS</h1>
-                        <table class="table table-hover" id="result" style="margin-top:20px; background-color:rgba(0,0,0,0.6);">
-                            <thead class="thead-dark">
-                            <th>Name</th>
-                            <th>ID</th>
-                            <th>Option</th>
-                            </thead>
-                            {% for i in users %}
-                                <tr>
-                                <td>{{i.user_name}}</td>
-                                <td>{{i.user_id}}</td>
-                                <td><button>View Password</button></td>
-                                </tr>
-                            {% endfor %}
+                </div></div></div>
+        <div style="padding-bottom:20%">
+            <div class="container" style="width:50%; margin-top:15%; padding:20px 40px; background-color:rgba(255,255,255,0.8);" align="center">
+                        <h1 style="color:black;font-size: 200%;">USERS</h1>
+                    <table  class="table table-hover" id="result" style=" background-color:rgba(0,0,0,0.6);">
+                        <thead class="thead-dark">
+                        <th>Name</th>
+                        <th>ID</th>
+                        <th>Option</th>
+                        </thead>
+                        {% for i in users %}
                             <tr>
-                            <td>DEMO</td>
-                            <td>DEMO</td>
+                            <td>{{i.user_name}}</td>
+                            <td>{{i.user_id}}</td>
                             <td><button>View Password</button></td>
                             </tr>
-                        </table>
-                    </div>
+                        {% endfor %}
+                        <tr>
+                        <td>DEMO</td>
+                        <td>DEMO</td>
+                        <td><button>View Password</button></td>
+                        </tr>
+                    </table>
                 </div>
+            </div>
     </section>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
@@ -103,11 +122,43 @@
 <script src="{% static 'js/mixitup.min.js' %}"></script>
 <script src="{% static 'js/main.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.1/fullcalendar.min.js"></script>
-<script src="{% static 'js/calendar.js' %}"></script>
 
 </body>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/fixedheader/3.1.6/js/dataTables.fixedHeader.min.js"></script>
+<script>
+    $(document).ready(function() {
+    // Setup - add a text input to each footer cell
+    $('#result thead tr').clone(true).appendTo( '#result thead' );
+    $('#result thead tr:eq(1) th').each( function (i) {
+        var title = $(this).text();
+        $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+
+        $( 'input', this ).on( 'keyup change', function () {
+            if ( table.column(i).search() !== this.value ) {
+                table
+                    .column(i)
+                    .search( this.value )
+                    .draw();
+            }
+        } );
+    } );
+
+    var table = $('#result').DataTable(
+    {
+        orderCellsTop: true,
+        fixedHeader: true
+    } );
+} );
+  var table = $('#result').DataTable(
+    {
+        "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                $('td', nRow).css('background-color','255,255,255');
+        }
+    }
+        );
+table.destroy();
+</script>
     <script>
     window.onload = function(){
     document.getElementById("{{tab}}").classList.add("active");

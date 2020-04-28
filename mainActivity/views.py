@@ -50,8 +50,8 @@ def adduser(request):
                 print("Invalid entries")
                 return redirect('adduser')
             return redirect('index')
-        users = users.objects.all()
-        return render(request,'add_user.html',({'users':users}))
+        allusers = users.objects.all()
+        return render(request,'add_user.html',({'users':allusers}))
     else:
         return redirect('index')
 
