@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
+
     <meta charset="UTF-8">
     <meta name="description" content="Yoga Studio Template">
     <meta name="keywords" content="Yoga, unica, creative, html">
@@ -23,6 +24,22 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
 
     </head>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" type="text/css">
+<link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.1.6/css/fixedHeader.dataTables.min.css" type="text/css">
+<style>
+    thead input {
+        width: 100%;
+    }
+    table{
+    opacity:.97;
+    }
+    td {
+    background-color: rgba(0,0,0,.7);
+    }
+
+input::placeholder {
+  font-size:14px;
+}
 <style>
     hr{
     margin:0;
@@ -105,11 +122,43 @@
 <script src="{% static 'js/mixitup.min.js' %}"></script>
 <script src="{% static 'js/main.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.1/fullcalendar.min.js"></script>
-<script src="{% static 'js/calendar.js' %}"></script>
 
 </body>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/fixedheader/3.1.6/js/dataTables.fixedHeader.min.js"></script>
+<script>
+    $(document).ready(function() {
+    // Setup - add a text input to each footer cell
+    $('#result thead tr').clone(true).appendTo( '#result thead' );
+    $('#result thead tr:eq(1) th').each( function (i) {
+        var title = $(this).text();
+        $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+
+        $( 'input', this ).on( 'keyup change', function () {
+            if ( table.column(i).search() !== this.value ) {
+                table
+                    .column(i)
+                    .search( this.value )
+                    .draw();
+            }
+        } );
+    } );
+
+    var table = $('#result').DataTable(
+    {
+        orderCellsTop: true,
+        fixedHeader: true
+    } );
+} );
+  var table = $('#result').DataTable(
+    {
+        "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                $('td', nRow).css('background-color','255,255,255');
+        }
+    }
+        );
+table.destroy();
+</script>
     <script>
     window.onload = function(){
     document.getElementById("{{tab}}").classList.add("active");
