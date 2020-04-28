@@ -23,5 +23,6 @@ urlpatterns = [
     path('view_paid_bills',views.view_paid_bills, name='view_paid_bills'),
     path('logout',views.logout,name="logout"),
     path('login',views.login,name="login"),
+    path('adduser',views.adduser,name="adduser"),
 ]
 urlpatterns+=staticfiles_urlpatterns()

@@ -1,7 +1,7 @@
 from django.db.models import Q
 import datetime
 from django.shortcuts import render, redirect
-from .models import customer, prices, adverts, rejected, bills, payments
+from .models import customer, prices, adverts, rejected, bills, payments, users
 from django.utils import timezone
 import time
 
@@ -20,16 +20,39 @@ def index(request):
 
 def login(request):
     if request.method=='POST':
-        ad_id=request.POST.get('admin_id')
-        ad_pass=request.POST.get('admin_pass')
-        if ad_id=="admin" and ad_pass=="admin":
+        user_id=request.POST.get('login_id')
+        user_pass=request.POST.get('login_pass')
+        if user_id=="admin" and user_pass=="admin":
             request.session['username'] = "admin"
             return redirect('index')
+        else:
+            user = users.objects.filter(user_id=user_id,user_pass=user_pass)
+            if user.exists():
+                request.session['username']=user_id
+                return redirect('index')
     return render(request,'login.html')
 
 def logout(request):
     del request.session['username']
     return redirect('login')
+
+def adduser(request):
+    if request.session.has_key('username') and request.session['username']=="admin":
+        if request.method=='POST':
+            user_name=request.POST.get('name')
+            user_id=request.POST.get('user_id')
+            user_pass=request.POST.get('user_pass')
+            if(user_name!='' and user_id!='' and len(user_pass)>=8):
+                obj = users(user_name=user_name,user_id=user_id,user_pass=user_pass)
+                obj.save()
+                print("User added successfully")
+            else:
+                print("Invalid entries")
+                return redirect('adduser')
+            return redirect('index')
+        return render(request,'add_user.html')
+    else:
+        return redirect('index')
 
 
 # PRICES--------------------------------------------------------------------------------

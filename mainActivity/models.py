@@ -49,5 +49,10 @@ class payments(models.Model):
     payment_mode=models.CharField(max_length=255)
     payment_date=models.DateTimeField(default=timezone.now)
 
+class users(models.Model):
+    user_name=models.CharField(max_length=255)
+    user_id=models.CharField(max_length=255)
+    user_pass=models.CharField(max_length=255)
+
 
 
