@@ -1,1 +1,1 @@
-web:gunicorn Ads_management.wsgi --log-file -
+web: gunicorn Ads_management.wsgi --log-file -
