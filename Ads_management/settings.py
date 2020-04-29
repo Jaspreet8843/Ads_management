@@ -74,13 +74,13 @@ WSGI_APPLICATION = 'Ads_management.wsgi.application'
 #     }
 # }
 
-#DATABASES = { 'default' : dj_database_url.config()}
+DATABASES = { 'default' : dj_database_url.config()}
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-    }
-}
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql_psycopg2",
+#     }
+# }
 
 from django.db.backends.mysql.base import DatabaseWrapper
 DatabaseWrapper.data_types['DateTimeField'] = 'datetime' # fix for MySQL 5.5
@@ -131,6 +131,6 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'static')
 ]
 #STATIC_ROOT = posixpath.join(*(BASE_DIR.split(os.path.sep) + ['static']))
-# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 django_heroku.settings(locals())
