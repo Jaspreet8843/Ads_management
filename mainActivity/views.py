@@ -13,8 +13,7 @@ def index(request):
     # p=prices(cust_type=c[0], price='10000')
     if request.session.has_key('username'):
         date_today=datetime.date.today()
-        today=""
-        #today = adverts.objects.filter(ad_date_from__lte=date_today, ad_date_till__gte=date_today, ad_status='approved')
+        today = adverts.objects.filter(ad_date_from__lte=date_today, ad_date_till__gte=date_today, ad_status='approved')
         return render(request, 'localsdirectory/index.html',({'tab':"home",'today':today,'date':date_today}))
     else:
         return redirect('login')
@@ -25,6 +24,7 @@ def login(request):
         user_pass=request.POST.get('login_pass')
         if user_id=="admin" and user_pass=="admin":
             request.session['username'] = "admin"
+            print("User logged in!")
             return redirect('index')
         else:
             user = users.objects.filter(user_id=user_id,user_pass=user_pass)
