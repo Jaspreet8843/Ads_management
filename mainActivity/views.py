@@ -182,6 +182,7 @@ def billing(request):
             cust_id = request.POST.get('customer_id')
             ads = adverts.objects.filter(cust_id=cust_id, ad_status="Approved").order_by('ad_date_from')
             ads = ads.exclude(id__in=bills.objects.filter(cust_id=cust_id).values('ad_id'))
+            print(ads.query)
             return render(request, 'billing.html', ({'cust': cust, 'ads': ads, 'customer_id': cust_id,'tab':"bills"}))
         return render(request, 'billing.html', ({'cust': cust,'tab':"bills"}))
     else:
@@ -193,8 +194,11 @@ def view_bills(request):
         cust = customer.objects.filter()
         if request.method == 'POST':
             cust_id = request.POST.get('customer_id')
-            bill = adverts.objects.raw("""Select * from mainactivity_adverts ad, mainactivity_bills bill where bill.ad_id=ad.id
-             and ad.cust_id=%s""", [cust_id])
+            # bill = adverts.objects.raw("""Select * from mainactivity_adverts ad, mainactivity_bills bill 
+            # where bill.ad_id=ad.id and ad.cust_id=%s""", [cust_id])
+            bill=adverts.objects.filter(cust_id=cust_id)
+            bill=bill.exclude(id__in=bills.objects.filter(cust_id=cust_id).values('ad_id'))
+            print(bill.query)
             return render(request, 'view_bills.html', ({'bill': bill, 'cust': cust,'tab':"bills"}))
         return render(request, 'view_bills.html', ({'cust': cust,'tab':"bills"}))
     else:

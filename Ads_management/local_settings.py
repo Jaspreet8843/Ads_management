@@ -1,3 +1,4 @@
+#py manage.py runserver --settings=Ads_management.local_settings
 from .settings import *
 
 DATABASES = {
