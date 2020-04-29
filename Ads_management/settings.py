@@ -63,6 +63,9 @@ WSGI_APPLICATION = 'Ads_management.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+DATABASES = {}
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
@@ -76,14 +79,14 @@ WSGI_APPLICATION = 'Ads_management.wsgi.application'
 
 #DATABASES = { 'default' : dj_database_url.config()}
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-    }
-}
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql_psycopg2",
+#     }
+# }
 
-db_from_env = dj_database_url.config()
-DATABASES['default'].update(db_from_env)
+# db_from_env = dj_database_url.config()
+# DATABASES['default'].update(db_from_env)
 
 # from django.db.backends.mysql.base import DatabaseWrapper
 # DatabaseWrapper.data_types['DateTimeField'] = 'datetime' # fix for MySQL 5.5
