@@ -5,6 +5,31 @@ from .models import customer, prices, adverts, rejected, bills, payments, users
 from django.utils import timezone
 from django.forms.models import  model_to_dict
 import time
+from copy import copy
+
+# FOR REPLACEMENT OF RAW QUERIES
+def join_tables(t1, t2):
+    list1=t1
+    list2=t2
+    list3=[]
+    for item1 in list1:
+        for item2 in list2:
+            it = copy(item1)
+            for item, val in item2.items():
+                if item not in item1:
+                    it[item] = val
+                else:
+                    it[item + "_COPY"] = val
+            list3.append(it)
+    return list3
+
+# FOR CONNECTING TWO TABLES
+def conn(table, col1, col2):
+    new_table=[]
+    for row in table:
+        if row[col1]==row[col2]:
+            new_table.append(row)
+    return new_table
 
 
 # Create your views here.
@@ -187,13 +212,14 @@ def view_bills(request):
             cust_id = request.POST.get('customer_id')
             # bill = adverts.objects.raw("""Select * from mainactivity_adverts ad, mainactivity_bills bill 
             # where bill.ad_id=ad.id and ad.cust_id=%s""", [cust_id])
-            bill=adverts.objects.filter(cust_id=cust_id)
-            bill=bill.exclude(id__in=bills.objects.filter(cust_id=cust_id).values('ad_id'))
-            print(bill.query)
             # bill = adverts.objects.raw("""Select * from mainactivity_adverts ad, mainactivity_bills bill where bill.ad_id=ad.id
             #  and ad.cust_id=%s""", [cust_id])
             # print(model_to_dict(cust[0]))
-            return render(request, 'view_bills.html', ({'bill': bill, 'cust': cust,'tab':"bills"}))
+            bi=bills.objects.values('ad_id','price','gst','total')
+            ad=adverts.objects.values('id','ad_header','ad_date_from','ad_date_till','ad_page').filter(cust_id=cust_id)
+            joined=join_tables(bi,ad)
+            connected=conn(joined,"ad_id","id")
+            return render(request, 'view_bills.html', ({'bill': connected, 'cust': cust,'tab':"bills"}))
         return render(request, 'view_bills.html', ({'cust': cust,'tab':"bills"}))
     else:
         return redirect('login')
