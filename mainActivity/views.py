@@ -30,7 +30,7 @@ def login(request):
             if user.exists():
                 request.session['username']=user_id
                 return redirect('index')
-    return render(request,'login.html')
+    return render(request,'index.html')
 
 def logout(request):
     del request.session['username']
