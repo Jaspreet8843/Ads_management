@@ -82,6 +82,7 @@ WSGI_APPLICATION = 'Ads_management.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'postgresql',
     }
 }
 
@@ -138,5 +139,4 @@ STATICFILES_DIRS = [
 #STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 django_heroku.settings(locals())
-
-del DATABASES['default']['OPTIONS']['sslmode']
+#del DATABASES['default']['OPTIONS']['sslmode']
