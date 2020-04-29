@@ -334,10 +334,16 @@ def pay_bills(request):
                 payment_date = "N/A"
                 payment_mode = 'N/A'
 
-            bill = adverts.objects.raw("""Select * from mainactivity_adverts ad, mainactivity_bills bill where bill.ad_id=ad.id
-                 and ad.cust_id=%s""", [cust_id])
-            return render(request, 'pay_bills.html', ({'bill': bill, 'cust': cust, 'amount_due': amount_due,
-                                                       'amount_paid': amount_paid, 'payment_date': payment_date,
+            bi = bills.objects.values('ad_id', 'price', 'gst', 'total')
+            ad = adverts.objects.values('id', 'ad_header', 'ad_date_from', 'ad_date_till', 'ad_page').filter(
+                cust_id=cust_id)
+            joined = join_tables(bi, ad)
+            connected = conn(joined, "ad_id", "id")
+            #bill = adverts.objects.raw("""Select * from mainactivity_adverts ad, mainactivity_bills bill where bill.ad_id=ad.id
+             #    and ad.cust_id=%s""", [cust_id])
+
+            return render(request, 'pay_bills.html', ({'bill': connected, 'cust': cust, 'amount_due': amount_due,
+                                                      'amount_paid': amount_paid, 'payment_date': payment_date,
                                                        'payment_mode': payment_mode,'tab':"bills"}))
         return render(request, 'pay_bills.html', ({'cust': cust,'tab':"bills"}))
     else:
