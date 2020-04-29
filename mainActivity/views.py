@@ -3,6 +3,7 @@ import datetime
 from django.shortcuts import render, redirect
 from .models import customer, prices, adverts, rejected, bills, payments, users
 from django.utils import timezone
+from django.forms.models import  model_to_dict
 import time
 
 
@@ -131,14 +132,14 @@ def view_customers(request):
 def add_advert(request):
     if request.session.has_key('username'):
         if request.method == 'POST':
-            cust_name = request.POST.get('customer_name')
-            cust_id = request.POST.get('customer_id')
+            cust_id = request.POST.get('customer_name')
             dis_from = request.POST.get('disp_from')
             dis_till = request.POST.get('disp_till')
             ad_header = request.POST.get('ad_header')
             ad_height = request.POST.get('ad_height')
             ad_width = request.POST.get('ad_width')
             ad_page = request.POST.get('ad_page')
+            cust_name = customer.objects.filter(cust_id=cust_id)
             if (cust_name != '' and cust_id != '' and ad_header != '' and ad_height != ''
                     and ad_width != ''):
                 customer_name = customer.objects.filter(cust_id=cust_id)
@@ -149,18 +150,8 @@ def add_advert(request):
             else:
                 print("Entries can't be empty")
             return redirect('index')
-        cust = {}
-        cust_obj = customer.objects.all()
-        cust_name = []
-        cust_id = []
-        for c in cust_obj:
-            cust_name.append(c.cust_name)
-            cust_id.append(c.cust_id)
-        cust['name'] = cust_name
-        cust['id'] = cust_id
-        cust['tab'] = "adv"
-        print(cust)
-        return render(request, 'add_advert.html', (cust))
+        cust = customer.objects.filter()
+        return render(request, 'add_advert.html', ({'cust':cust,'tab':"adv"}))
     else:
         return redirect('login')
 
@@ -199,6 +190,9 @@ def view_bills(request):
             bill=adverts.objects.filter(cust_id=cust_id)
             bill=bill.exclude(id__in=bills.objects.filter(cust_id=cust_id).values('ad_id'))
             print(bill.query)
+            # bill = adverts.objects.raw("""Select * from mainactivity_adverts ad, mainactivity_bills bill where bill.ad_id=ad.id
+            #  and ad.cust_id=%s""", [cust_id])
+            # print(model_to_dict(cust[0]))
             return render(request, 'view_bills.html', ({'bill': bill, 'cust': cust,'tab':"bills"}))
         return render(request, 'view_bills.html', ({'cust': cust,'tab':"bills"}))
     else:
