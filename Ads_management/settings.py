@@ -74,13 +74,13 @@ WSGI_APPLICATION = 'Ads_management.wsgi.application'
 #     }
 # }
 
-DATABASES = { 'default' : dj_database_url.config()}
+#DATABASES = { 'default' : dj_database_url.config()}
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql_psycopg2",
-#     }
-# }
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+    }
+}
 
 from django.db.backends.mysql.base import DatabaseWrapper
 DatabaseWrapper.data_types['DateTimeField'] = 'datetime' # fix for MySQL 5.5
