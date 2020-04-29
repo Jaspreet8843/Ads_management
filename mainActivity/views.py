@@ -335,7 +335,7 @@ def pay_bills(request):
                 payment_mode = 'N/A'
 
             bi = bills.objects.values('ad_id', 'price', 'gst', 'total')
-            ad = adverts.objects.values('id', 'ad_header', 'ad_date_from', 'ad_date_till', 'ad_page').filter(
+            ad = adverts.objects.values('id','cust_name','cust_id', 'ad_header', 'ad_date_from', 'ad_date_till', 'ad_page').filter(
                 cust_id=cust_id)
             joined = join_tables(bi, ad)
             connected = conn(joined, "ad_id", "id")
