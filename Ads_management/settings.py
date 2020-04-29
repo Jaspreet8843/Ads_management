@@ -85,8 +85,8 @@ DATABASES = {
 db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
 
-from django.db.backends.mysql.base import DatabaseWrapper
-DatabaseWrapper.data_types['DateTimeField'] = 'datetime' # fix for MySQL 5.5
+# from django.db.backends.mysql.base import DatabaseWrapper
+# DatabaseWrapper.data_types['DateTimeField'] = 'datetime' # fix for MySQL 5.5
 
 
 # Password validation
