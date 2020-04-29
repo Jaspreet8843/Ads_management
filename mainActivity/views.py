@@ -149,18 +149,8 @@ def add_advert(request):
             else:
                 print("Entries can't be empty")
             return redirect('index')
-        cust = {}
-        cust_obj = customer.objects.all()
-        cust_name = []
-        cust_id = []
-        for c in cust_obj:
-            cust_name.append(c.cust_name)
-            cust_id.append(c.cust_id)
-        cust['name'] = cust_name
-        cust['id'] = cust_id
-        cust['tab'] = "adv"
-        print(cust)
-        return render(request, 'add_advert.html', (cust))
+        cust = customer.objects.filter()
+        return render(request, 'add_advert.html', ({'cust':cust,'tab':"adv"}))
     else:
         return redirect('login')
 

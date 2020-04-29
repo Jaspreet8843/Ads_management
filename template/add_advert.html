@@ -12,8 +12,8 @@
                         <form method="post"> {% csrf_token %}
                             <tr><td>Customer Name:</td><td><select class="form-control" name="customer_name" id="customer_name" onchange="myfunct(this)">
                                 <option>--select--</option>
-                                {% for c in name %}
-                                <option value="{{ forloop.counter }}">{{c}}</option>
+                               {% for c in cust %}
+                                    <option value={{c.cust_id}}>{{c.cust_name}}</option>
                                 {% endfor %}
                             </select><br></td></tr>
                             <tr><td>Customer ID:</td><td><input class="form-control" type="text" id="customer_id" name="customer_id" disabled><br></td></tr>
@@ -41,16 +41,8 @@
 <script>
     function myfunct(obj)
     {
-    var index=obj.value;
-    {% for i in id %}
-    var j="{{forloop.counter}}";
-    console.log(j);
-        {% if j == index %}
-        console.log("i "+index)
-        document.getElementById('customer_id').value={{i}};
-        {% endif %}
-    {% endfor %}
+    var id=obj.value;
+    document.getElementById('customer_id').value=id;
     }
-
     </script>
 {% endblock %}
