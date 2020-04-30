@@ -306,9 +306,13 @@ def reject(request, no):
 
 def view_rejected(request):
     if request.session.has_key('username'):
-        reject = rejected.objects.raw("""SELECT * FROM mainactivity_adverts, mainactivity_rejected where 
-            mainactivity_adverts.id=mainactivity_rejected.ad_id order by mainactivity_rejected.rej_date desc""")
-        return render(request, 'view_rejected.html', ({'reject': reject,'tab':"adv"}))
+        #reject = rejected.objects.raw("""SELECT * FROM mainactivity_adverts, mainactivity_rejected where
+         #   mainactivity_adverts.id=mainactivity_rejected.ad_id order by mainactivity_rejected.rej_date desc""")
+        reject=rejected.objects.values('ad_id','rej_date','desc')
+        adv=adverts.objects.values('id','cust_name','cust_id','ad_header')
+        join=join_tables(reject,adv)
+        table=conn(join,'ad_id','id')
+        return render(request, 'view_rejected.html', ({'reject': table,'tab':"adv"}))
     else:
         return redirect('login')
 
@@ -408,8 +412,12 @@ def pay_confirm(request, no):
 
 def view_paid_bills(request):
     if request.session.has_key('username'):
-        paid = rejected.objects.raw("""SELECT * FROM mainactivity_customer c, mainactivity_payments p where 
-                c.cust_id=p.cust_id order by p.payment_date desc""")
-        return render(request, 'view_paid_bills.html', ({'paid': paid,'tab':"bills"}))
+        #paid = rejected.objects.raw("""SELECT * FROM mainactivity_customer c, mainactivity_payments p where
+         #       c.cust_id=p.cust_id order by p.payment_date desc""")
+        paid=payments.objects.values('cust_id','payment_due','payment_amount','payment_date','payment_mode')
+        cust=customer.objects.values('cust_id','cust_name')
+        join=join_tables(paid,cust)
+        table=conn(join,'cust_id_COPY','cust_id')
+        return render(request, 'view_paid_bills.html', ({'paid': table,'tab':"bills"}))
     else:
         return redirect('login')
