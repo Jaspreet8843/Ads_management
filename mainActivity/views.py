@@ -39,7 +39,7 @@ def index(request):
     # p=prices(cust_type=c[0], price='10000')
     if request.session.has_key('username'):
         date_today=datetime.date.today()
-        today = adverts.objects.filter(ad_date_from__lte=date_today, ad_date_till__gte=date_today, ad_status='approved')
+        today = adverts.objects.filter(ad_date_from__lte=date_today, ad_date_till__gte=date_today, ad_status='Approved')
         return render(request, 'localsdirectory/index.html',({'tab':"home",'today':today,'date':date_today}))
     else:
         return redirect('login')
