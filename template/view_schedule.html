@@ -70,6 +70,7 @@ input::placeholder {
                             <th>Height</th>
                             <th>Width</th>
                             <th>Page</th>
+                            <th>status</th>
                             </thead>
                             {% for i in schedule %}
                             <tr>
@@ -80,6 +81,7 @@ input::placeholder {
                                 <td>{{i.ad_height}}</td>
                                 <td>{{i.ad_width}}</td>
                                 <td>{{i.ad_page}}</td>
+                                <td>{{i.ad_status}}</td>
                             </tr>
                             {% endfor %}
                         </table>

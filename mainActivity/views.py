@@ -259,7 +259,8 @@ def view_schedule(request):
                 schedule = adverts.objects.filter(ad_date_from__gte=date_from, ad_date_from__lte=date_upto, ad_status='approved').order_by(
                     'ad_date_from')
             else:
-                schedule = adverts.objects.filter(ad_status='approved').order_by('ad_date_from')
+                #schedule = adverts.objects.filter(ad_status='approved').order_by('ad_date_from')
+                schedule = adverts.objects.filter().order_by('ad_date_from')
         return render(request, 'view_schedule.html', ({'schedule': schedule,'tab':"schedule"}))
     else:
         return redirect('login')
