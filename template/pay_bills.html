@@ -54,92 +54,9 @@ input::placeholder {
                     </td>
                 </tr>
         </table>
+        </form>
         {% if bill is not none %}
         <div id="result">
-            <p></p>
-            </form><br><br>
-            <div class="container" style="width:50%; padding-top:5%;">
-                <form action="pay_bills/{{bill.0.cust_id}}" method="POST">
-                    <table align="center" class="table table-hover" id="result"
-                           style=" padding:0px; margin:100px auto; background-color:rgba(0,0,0,0.6);" width="400px">
-                        <tr>
-                            <td>CUSTOMER NAME</td>
-                            <td>: {{bill.0.cust_name}}</td>
-                        </tr>
-                        <tr>
-                            <td>CUSTOMER ID</td>
-                            <td>: {{bill.0.cust_id}}</td>
-                        </tr>
-                        {% csrf_token %}
-                        <tr>
-                            <th>
-                                Enter Amount:
-                            </th>
-                            <td>
-                                <input class="container" id="amount" name="amount" type="number">
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                Enter Payment Mode:
-                            </th>
-                            <td>
-                                <input class="container" id="mode" name="mode" type="text">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td align="center" colspan="2" height="50px">
-                                <button class="container primary-btn"
-                                        style="font-size:20px; padding:20px 20px; border: 1px solid #FF5581;"
-                                        type="submit">SUBMIT
-                                </button>
-                            </td>
-                        </tr>
-                    </table>
-                </form>
-            </div>
-            <br><br><br>
-            <div CLASS="container" style="background-color:rgba(0,0,0,0.6); width:50%; padding:20px;">
-                <h2 align="center" style="color:white;">PREVIOUS PAYMENT DETAILS</h2>
-                <form method="POST">
-                    <table align="center" class="table table-hover" width="100%">
-                        <tr>
-                            <th>
-                                Amount Due:
-                            </th>
-                            <td>
-                                {{amount_due}}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                Amount Paid:
-                            </th>
-                            <td>
-                                {{amount_paid}}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                Last Payment Date:
-                            </th>
-                            <td>
-                                {{payment_date}}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                Last Payment Mode:
-                            </th>
-                            <td>
-                                {{payment_mode}}
-                            </td>
-                        </tr>
-                    </table>
-
-                </form>
-            </div>
-            <br>
             <div class="container" style="padding:20% 0px 0px 0px;">
                 <h2 align="center" style="color:white;">BILL DETAILS</h2>
                  <div style="background-color:rgba(255,255,255,0.6); padding:20px 50px">
@@ -173,6 +90,49 @@ input::placeholder {
             <p align="right" style="font-size:20px; padding-right: 20px;font-weight: bold; color:white;">GRAND TOTAL:</p>
                     <p align="right" id="grand_total"
                            style="font-size:30px; padding-right: 20px;font-weight: bold; color:white;">0</p>
+
+            <div CLASS="container" style="background-color:rgba(255,255,255,0.6); padding:10px; margin-top:200px">
+                <form method="POST">
+                    <table class="table table-hover" style="background-color:rgba(0,0,0,0.8); margin:0;">
+                        <tr>
+                            <th colspan="4"><h2 align="center" style="color:white;">PAYMENT</h2></th>
+                        </tr>
+                        <tr>
+                            <th>Amount Due:</th>
+                            <td>: {{amount_due}}</td>
+                            <th>CUSTOMER NAME</th>
+                            <td>: {{bill.0.cust_name}}</td>
+                        </tr>
+                        <tr>
+                            <th>Amount Paid:</th>
+                            <td>: {{amount_paid}}</td>
+                            <th>CUSTOMER ID</th>
+                            <td>: {{bill.0.cust_id}}</td>
+                        </tr>
+                        <tr>
+                            <th>Last Payment Date:</th>
+                            <td>: {{payment_date}}</td>
+                            <th>Enter Amount:</th>
+                            <td><input class="container" id="amount" name="amount" type="number"></td>
+                        </tr>
+                        <tr>
+                            <th>Last Payment Mode:</th>
+                            <td>: {{payment_mode}}</td>
+                            <th>Enter Payment Mode:</th>
+                            <td><input class="container" id="mode" name="mode" type="text"></td>
+                        </tr>
+                        <tr>
+                            <td align="right" colspan="4" height="50px">
+                                <button class="container primary-btn"
+                                        style="font-size:20px; padding:20px 20px; border: 1px solid #FF5581;"
+                                        type="submit">SUBMIT
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+
             {% endif %}
         </div>
     </div>
