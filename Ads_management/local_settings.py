@@ -11,4 +11,5 @@ DATABASES = {
         'PORT':'3306',
     }
 }
+
 SECURE_SSL_REDIRECT = False
