@@ -48,7 +48,7 @@ def login(request):
     if request.method=='POST':
         user_id=request.POST.get('login_id')
         user_pass=request.POST.get('login_pass')
-        if user_id=="admin" and user_pass=="admin":
+        if user_id=="admin" and user_pass=="adminadmin":
             request.session['username'] = "admin"
             print("User logged in!")
             return redirect('index')

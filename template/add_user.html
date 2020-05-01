@@ -79,9 +79,9 @@ input::placeholder {
                     <div class="hero-text" align="center" style="background-color:rgba(255,255,255,0.8); padding:20px 50px">
                         <h1 style="color: black;font-size: 200%;">ADD USER</h1>
                         <form method="post"> {% csrf_token %}
-                            <input class="form-control" type="text" name="name" placeholder="NAME"><br>
-                            <input class="form-control" type="text" name="user_id" placeholder="USER ID"><br>
-                            <input class="form-control" type="password" name="user_pass" placeholder="NEW PASSWORD"><br>
+                            <input class="form-control" type="text" name="name" placeholder="NAME" pattern="[a-zA-Z ]{2,}" required="required"><br>
+                            <input class="form-control" type="text" name="user_id" placeholder="USER ID" pattern="[a-zA-Z0-9]{2,}" required="required"><br>
+                            <input class="form-control" type="password" name="user_pass" placeholder="NEW PASSWORD" required="required" pattern=".{8,20}" title="Password should be 8-20 characters long"><br>
                             <button class="btn btn-primary" type="submit" style="background-color: #ff5581;border-color: #ff5581;">REGISTER</button><br>
                         </form>
                     </div>
@@ -99,14 +99,9 @@ input::placeholder {
                             <tr>
                             <td>{{i.user_name}}</td>
                             <td>{{i.user_id}}</td>
-                            <td><button>View Password</button></td>
+                            <td><button onclick="viewPass('{{i.user_id}}')">View Password</button><p id={{i.user_id}} style="display: none;color: white;">{{i.user_pass}}</p></td>
                             </tr>
                         {% endfor %}
-                        <tr>
-                        <td>DEMO</td>
-                        <td>DEMO</td>
-                        <td><button>View Password</button></td>
-                        </tr>
                     </table>
                 </div>
             </div>
@@ -158,6 +153,16 @@ input::placeholder {
     }
         );
 table.destroy();
+
+function viewPass(passId){
+    console.log(passId);
+    var x = document.getElementById(passId);
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+}
 </script>
     <script>
     window.onload = function(){

@@ -92,7 +92,7 @@ input::placeholder {
                            style="font-size:30px; padding-right: 20px;font-weight: bold; color:white;">0</p>
 
             <div CLASS="container" style="background-color:rgba(255,255,255,0.6); padding:10px; margin-top:200px">
-                <form method="POST">
+                <form method="POST"> {% csrf_token %}
                     <table class="table table-hover" style="background-color:rgba(0,0,0,0.8); margin:0;">
                         <tr>
                             <th colspan="4"><h2 align="center" style="color:white;">PAYMENT</h2></th>
@@ -113,13 +113,13 @@ input::placeholder {
                             <th>Last Payment Date:</th>
                             <td>: {{payment_date}}</td>
                             <th>Enter Amount:</th>
-                            <td><input class="container" id="amount" name="amount" type="number"></td>
+                            <td><input class="container" id="amount" name="amount" type="number" required="required" max="{{amount_due}}"></td>
                         </tr>
                         <tr>
                             <th>Last Payment Mode:</th>
                             <td>: {{payment_mode}}</td>
                             <th>Enter Payment Mode:</th>
-                            <td><input class="container" id="mode" name="mode" type="text"></td>
+                            <td><input class="container" id="mode" name="mode" type="text" required="required"></td>
                         </tr>
                         <tr>
                             <td align="right" colspan="4" height="50px">

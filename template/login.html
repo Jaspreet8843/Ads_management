@@ -62,8 +62,8 @@
                     <div class="hero-text" align="center" style="background-color:rgba(255,255,255,0.8); padding:20px 50px">
                         <h1 style="color: black;font-size: 200%;">LOGIN</h1>
                         <form method="post"> {% csrf_token %}
-                            <input class="form-control" type="text" name="login_id" placeholder="USER ID"><br>
-                            <input class="form-control" type="password" name="login_pass" placeholder="PASSWORD"><br>
+                            <input class="form-control" type="text" name="login_id" placeholder="USER ID" pattern="[a-zA-Z0-9]{2,}" required="required"><br>
+                            <input class="form-control" type="password" name="login_pass" placeholder="PASSWORD" required="required" pattern=".{8,20}" title="Password should be 8-20 characters long"><br>
                             <button class="btn btn-primary" type="submit" style="background-color: #ff5581;border-color: #ff5581;">LOGIN</button><br>
                         </form>
                     </div>

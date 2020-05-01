@@ -20,9 +20,9 @@
                             <tr><td>Display From:</td><td><input class="form-control" type="date" name="disp_from" id="fromDate" required="required"><br></td></tr>
                             <tr><td>Display Till:</td><td><input class="form-control" type="date" name="disp_till" id="toDate" required="required"><br></td></tr>
                             <tr><td>AD Header:</td><td><input class="form-control" type="text" name="ad_header" required="required"><br></td></tr>
-                            <tr><td>Height:</td><td><input class="form-control" type="text" name="ad_height" required="required" pattern="[0-9]{1,}"><br></td></tr>
-                            <tr><td>Width:</td><td><input class="form-control" type="text" name="ad_width" required="required" pattern="[0-9]{1,}"><br></td></tr>
-                            <tr><td>Page Number(optional):</td><td><input class="form-control" type="number" name="ad_page"><br></td></tr>
+                            <tr><td>Height:</td><td><input class="form-control" type="text" name="ad_height" required="required" pattern="[0-9.]{1,}" title="Number only"><br></td></tr>
+                            <tr><td>Width:</td><td><input class="form-control" type="text" name="ad_width" required="required" pattern="[0-9.]{1,}" title="Number only"><br></td></tr>
+                            <tr><td>Page Number(optional):</td><td><input class="form-control" type="number" name="ad_page" pattern="[0-9]{1,}" title="Number only"><br></td></tr>
                         </table><p></p>
                         <button class="primary-btn" type="submit">Send for approval</button>
                         </form>
