@@ -9,15 +9,15 @@
                     <div class="hero-text" align="center">
                     	<h1 style="color: white;font-size: 200%;">Add Customer</h1>
                     	<form method="post"> {% csrf_token %}
-                    		<input class="form-control" type="text" name="customer_name" placeholder="Name"><br>
-                    		<input class="form-control" type="text" name="customer_address" placeholder="Address"><br>
-                    		<input class="form-control" type="text" name="customer_phone" placeholder="Phone"><br>
-                    		<select class="form-control" name="customer_type">
+                    		<input class="form-control" type="text" name="customer_name" placeholder="Name" pattern="[a-zA-Z]{2,}" required="required"><br>
+                    		<input class="form-control" type="text" name="customer_address" placeholder="Address" pattern="[a-zA-Z]{2,}" required="required"><br>
+                    		<input class="form-control" type="text" name="customer_phone" placeholder="Phone" pattern="[6-9]{1}[0-9]{9}" title="Number can only contain 10 digits" maxlength="10" required="required"><br>
+                    		<select class="form-control" name="customer_type" required="required">
                     			<option value="government">Government</option>
                     			<option value="private">Private</option>
                     			<option value="non_government">Non Government</option>
                     		</select><br>
-                    		<input class="form-control" type="text" name="customer_id" placeholder="ID"><br>
+                    		<input class="form-control" type="text" name="customer_id" placeholder="ID" pattern="[a-zA-Z0-9]{2,}" required="required"><br>
                     		<button class="primary-btn" type="submit">Add customer</button><br>
                     	</form>
                     </div>
