@@ -49,15 +49,14 @@ input::placeholder {
                     <td width="25%">
                         <button class="primary-btn"
                                 style="font-size:20px; padding:20px 20px; border: 1px solid #FF5581;" type="submit">
-                            View Bills
+                            View Bill
                         </button>
                     </td>
                 </tr>
         </table>
+        </form>
         {% if bill is not none %}
         <div id="result">
-            <p></p>
-            </form><br><br>
             <div class="container" style="width:50%; padding-top:5%;">
                 <form action="pay_bills/{{bill.0.cust_id}}" method="POST">
                     <table align="center" class="table table-hover" id="result"
@@ -140,7 +139,7 @@ input::placeholder {
                 </form>
             </div>
             <br>
-            <div class="container" style="padding:20% 0px 0px 0px;">
+            <!-- <div class="container" style="padding:20% 0px 0px 0px;">
                 <h2 align="center" style="color:white;">BILL DETAILS</h2>
                  <div style="background-color:rgba(255,255,255,0.6); padding:20px 50px">
                 <table align="center" class="table table-hover" id="bill_table" onload="grand()"
@@ -169,10 +168,10 @@ input::placeholder {
                     {% endfor %}
                 </table>
                  </div>
-            </div>
-            <p align="right" style="font-size:20px; padding-right: 20px;font-weight: bold; color:white;">GRAND TOTAL:</p>
+            </div> -->
+            <!-- <p align="right" style="font-size:20px; padding-right: 20px;font-weight: bold; color:white;">GRAND TOTAL:</p>
                     <p align="right" id="grand_total"
-                           style="font-size:30px; padding-right: 20px;font-weight: bold; color:white;">0</p>
+                           style="font-size:30px; padding-right: 20px;font-weight: bold; color:white;">0</p> -->
             {% endif %}
         </div>
     </div>

@@ -267,11 +267,11 @@ def view_schedule(request):
 
 
 def pending_for_approval(request):
-    if request.session.has_key('username'):
+    if request.session.has_key('username') and request.session['username']=="admin":
         schedule = adverts.objects.filter(ad_status='Pending for approval').order_by('ad_date_from')
         return render(request, 'pending_for_approval.html', ({'schedule': schedule,'tab':"adv"}))
     else:
-        return redirect('login')
+        return redirect('index')
 
 
 def accept(request, no):
