@@ -1,1 +1,0 @@
-Dainik Janambhumi Ads Management System
