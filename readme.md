@@ -51,8 +51,8 @@ Once `pip` has finished downloading the dependencies:
 And navigate to `http://127.0.0.1:8000/Ads_management/`.
 
 ## Walkthrough
-The project has the user side and admin side. It allows 
-1. Login (as admin)
+The project has only admin side. It allows 
+1. Login
 2. Add/View Customer/s
 3. Add/View/Accept Advertisements
 4. Generate/View Bills
